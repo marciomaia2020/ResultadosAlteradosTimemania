@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultados Alterados da Timemania</title>
+    <title>Resultados Alterados da Timemania - Configurações Personalizadas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         :root {
@@ -72,6 +72,68 @@
             margin-bottom: 20px;
             font-size: 1.2rem;
             color: var(--secondary-dark);
+        }
+
+        /* Seção de Controles de Ajustes */
+        .controls-section {
+            background: linear-gradient(135deg, #fffee6, #d2f9df);
+            border: 2px solid #12923d;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(18, 146, 61, 0.3);
+        }
+
+        .controls-title {
+            color: #12923d;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .control-item {
+            background: white;
+            border: 2px solid #77ee9f;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .control-item label {
+            display: block;
+            color: #0b5b26;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .control-item select {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #77ee9f;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            background: #fffee6;
+            color: #0b5b26;
+        }
+
+        .control-item select:focus {
+            outline: none;
+            border-color: #12923d;
+            box-shadow: 0 0 0 3px rgba(18, 146, 61, 0.2);
         }
 
         .filters-container {
@@ -257,7 +319,7 @@
             padding: 10px 8px;
             text-align: center;
             border: 1px solid var(--table-border);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         th {
@@ -265,7 +327,7 @@
             color: white;
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 1px;
         }
 
@@ -447,7 +509,7 @@
 
             th, td {
                 padding: 6px 4px;
-                font-size: 0.75rem;
+                font-size: 0.7rem;
             }
 
             .dezena {
@@ -481,6 +543,10 @@
             .dezenas-linha {
                 gap: 1px;
             }
+
+            .controls-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 480px) {
@@ -498,7 +564,7 @@
             
             th, td {
                 padding: 4px 2px;
-                font-size: 0.7rem;
+                font-size: 0.65rem;
             }
 
             .dezena {
@@ -521,6 +587,10 @@
             .concurso-info .ultimo-concurso {
                 font-size: 0.7rem;
             }
+
+            .controls-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -532,13 +602,217 @@
     </div>
     
     <div class="centralizado">
-        <p>Carrega TODOS os resultados históricos da Timemania com dezenas alteradas e Time do Coração</p>
-        <p><small>Busca dados reais das APIs oficiais desde o primeiro concurso até o mais recente</small></p>
+        <p>Carrega TODOS os resultados históricos da Timemania com <strong>ajustes personalizáveis</strong></p>
+        <p><small>Configure os valores de soma/subtração que desejar • Números sempre entre 01-80 • 7 dezenas + Time do Coração</small></p>
+    </div>
+
+    <!-- Seção de Controles de Ajustes Personalizados -->
+    <div class="controls-section">
+        <div class="controls-title">
+            <i class="fas fa-cogs"></i> Configurações de Ajustes das Dezenas
+        </div>
+        
+        <div class="controls-grid">
+            <div class="control-item">
+                <label>Quantidade de Ajustes:</label>
+                <select id="quantidadeAjustes" onchange="updateAjustes()">
+                    <option value="2">2 Ajustes</option>
+                    <option value="3">3 Ajustes</option>
+                    <option value="4" selected>4 Ajustes</option>
+                    <option value="5">5 Ajustes</option>
+                    <option value="6">6 Ajustes</option>
+                </select>
+            </div>
+            
+            <div class="control-item">
+                <label>Ajuste 1:</label>
+                <select id="ajuste1" onchange="updateTable()">
+                    <option value="-10">-10</option>
+                    <option value="-9">-9</option>
+                    <option value="-8">-8</option>
+                    <option value="-7">-7</option>
+                    <option value="-6">-6</option>
+                    <option value="-5">-5</option>
+                    <option value="-4">-4</option>
+                    <option value="-3">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option value="0">0</option>
+                    <option value="1" selected>+1</option>
+                    <option value="2">+2</option>
+                    <option value="3">+3</option>
+                    <option value="4">+4</option>
+                    <option value="5">+5</option>
+                    <option value="6">+6</option>
+                    <option value="7">+7</option>
+                    <option value="8">+8</option>
+                    <option value="9">+9</option>
+                    <option value="10">+10</option>
+                </select>
+            </div>
+            
+            <div class="control-item">
+                <label>Ajuste 2:</label>
+                <select id="ajuste2" onchange="updateTable()">
+                    <option value="-10">-10</option>
+                    <option value="-9">-9</option>
+                    <option value="-8">-8</option>
+                    <option value="-7">-7</option>
+                    <option value="-6">-6</option>
+                    <option value="-5">-5</option>
+                    <option value="-4">-4</option>
+                    <option value="-3">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option value="0">0</option>
+                    <option value="1">+1</option>
+                    <option value="2" selected>+2</option>
+                    <option value="3">+3</option>
+                    <option value="4">+4</option>
+                    <option value="5">+5</option>
+                    <option value="6">+6</option>
+                    <option value="7">+7</option>
+                    <option value="8">+8</option>
+                    <option value="9">+9</option>
+                    <option value="10">+10</option>
+                </select>
+            </div>
+            
+            <div class="control-item">
+                <label>Ajuste 3:</label>
+                <select id="ajuste3" onchange="updateTable()">
+                    <option value="-10">-10</option>
+                    <option value="-9">-9</option>
+                    <option value="-8">-8</option>
+                    <option value="-7">-7</option>
+                    <option value="-6">-6</option>
+                    <option value="-5">-5</option>
+                    <option value="-4">-4</option>
+                    <option value="-3">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1" selected>-1</option>
+                    <option value="0">0</option>
+                    <option value="1">+1</option>
+                    <option value="2">+2</option>
+                    <option value="3">+3</option>
+                    <option value="4">+4</option>
+                    <option value="5">+5</option>
+                    <option value="6">+6</option>
+                    <option value="7">+7</option>
+                    <option value="8">+8</option>
+                    <option value="9">+9</option>
+                    <option value="10">+10</option>
+                </select>
+            </div>
+            
+            <div class="control-item">
+                <label>Ajuste 4:</label>
+                <select id="ajuste4" onchange="updateTable()">
+                    <option value="-10">-10</option>
+                    <option value="-9">-9</option>
+                    <option value="-8">-8</option>
+                    <option value="-7">-7</option>
+                    <option value="-6">-6</option>
+                    <option value="-5">-5</option>
+                    <option value="-4">-4</option>
+                    <option value="-3">-3</option>
+                    <option value="-2" selected>-2</option>
+                    <option value="-1">-1</option>
+                    <option value="0">0</option>
+                    <option value="1">+1</option>
+                    <option value="2">+2</option>
+                    <option value="3">+3</option>
+                    <option value="4">+4</option>
+                    <option value="5">+5</option>
+                    <option value="6">+6</option>
+                    <option value="7">+7</option>
+                    <option value="8">+8</option>
+                    <option value="9">+9</option>
+                    <option value="10">+10</option>
+                </select>
+            </div>
+            
+            <div class="control-item" id="controleAjuste5" style="display: none;">
+                <label>Ajuste 5:</label>
+                <select id="ajuste5" onchange="updateTable()">
+                    <option value="-10">-10</option>
+                    <option value="-9">-9</option>
+                    <option value="-8">-8</option>
+                    <option value="-7">-7</option>
+                    <option value="-6">-6</option>
+                    <option value="-5">-5</option>
+                    <option value="-4">-4</option>
+                    <option value="-3" selected>-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option value="0">0</option>
+                    <option value="1">+1</option>
+                    <option value="2">+2</option>
+                    <option value="3">+3</option>
+                    <option value="4">+4</option>
+                    <option value="5">+5</option>
+                    <option value="6">+6</option>
+                    <option value="7">+7</option>
+                    <option value="8">+8</option>
+                    <option value="9">+9</option>
+                    <option value="10">+10</option>
+                </select>
+            </div>
+            
+            <div class="control-item" id="controleAjuste6" style="display: none;">
+                <label>Ajuste 6:</label>
+                <select id="ajuste6" onchange="updateTable()">
+                    <option value="-10">-10</option>
+                    <option value="-9">-9</option>
+                    <option value="-8">-8</option>
+                    <option value="-7">-7</option>
+                    <option value="-6">-6</option>
+                    <option value="-5">-5</option>
+                    <option value="-4">-4</option>
+                    <option value="-3">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option value="0">0</option>
+                    <option value="1">+1</option>
+                    <option value="2">+2</option>
+                    <option value="3" selected>+3</option>
+                    <option value="4">+4</option>
+                    <option value="5">+5</option>
+                    <option value="6">+6</option>
+                    <option value="7">+7</option>
+                    <option value="8">+8</option>
+                    <option value="9">+9</option>
+                    <option value="10">+10</option>
+                </select>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 15px;">
+            <button class="button" onclick="resetarAjustes()">
+                <i class="fas fa-undo"></i> Resetar Padrão
+            </button>
+            <button class="button" onclick="ajustesAleatorios()">
+                <i class="fas fa-dice"></i> Ajustes Aleatórios
+            </button>
+            <button class="button" onclick="presetSequencial()">
+                <i class="fas fa-sort-numeric-up"></i> Preset Sequencial
+            </button>
+        </div>
+        
+        <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; color: var(--secondary-dark);">
+            💡 Os números sempre ficarão entre 01 e 80 (limites da Timemania) | 🎯 Configurações aplicadas em tempo real | 🏆 Time do Coração mantido em todos os ajustes
+        </div>
     </div>
 
     <div class="filters-container">
-        <button class="button" id="loadButton" onclick="fetchAllTimemaniaResults()">
-            <i class="fas fa-sync-alt"></i> Carregar Resultados Reais
+        <button class="button" onclick="openHelpModal()">
+            <i class="fas fa-question-circle"></i> Como Usar
+        </button>
+        <button class="button" id="loadButton" onclick="toggleCarregamento()" style="display: none;">
+            <i class="fas fa-times"></i> Cancelar Carregamento
+        </button>
+        <button class="button" id="reloadButton" onclick="recarregarDados()" style="display: none;">
+            <i class="fas fa-sync-alt"></i> Recarregar Dados
         </button>
     </div>
 
@@ -551,7 +825,7 @@
     </div>
 
     <div id="loadingMessage" class="loading" style="display: none;">
-        <div class="loading-spinner"></div> Carregando Resultados e Alterando...
+        <div class="loading-spinner"></div> Carregando Resultados e Aplicando Ajustes Personalizados...
     </div>
     
     <hr />
@@ -569,10 +843,12 @@
                     <th>Concurso</th>
                     <th>Data</th>
                     <th>Dezenas & Time Originais</th>
-                    <th>Dezenas (+1) & Time <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltiptext">Dezenas originais somadas com 1 (limitado entre 1 e 80) + Time do Coração</span></span></th>
-                    <th>Dezenas (+2) & Time <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltiptext">Dezenas originais somadas com 2 (limitado entre 1 e 80) + Time do Coração</span></span></th>
-                    <th>Dezenas (-1) & Time <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltiptext">Dezenas originais subtraídas de 1 (limitado entre 1 e 80) + Time do Coração</span></span></th>
-                    <th>Dezenas (-2) & Time <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltiptext">Dezenas originais subtraídas de 2 (limitado entre 1 e 80) + Time do Coração</span></span></th>
+                    <th id="headerAjuste1">Dezenas & Time (+1) <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltiptext">Números ajustados conforme configuração</span></span></th>
+                    <th id="headerAjuste2">Dezenas & Time (+2) <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltiptext">Números ajustados conforme configuração</span></span></th>
+                    <th id="headerAjuste3">Dezenas & Time (-1) <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltiptext">Números ajustados conforme configuração</span></span></th>
+                    <th id="headerAjuste4">Dezenas & Time (-2) <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltiptext">Números ajustados conforme configuração</span></span></th>
+                    <th id="headerAjuste5" style="display: none;">Dezenas & Time (-3) <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltiptext">Números ajustados conforme configuração</span></span></th>
+                    <th id="headerAjuste6" style="display: none;">Dezenas & Time (+3) <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltiptext">Números ajustados conforme configuração</span></span></th>
                 </tr>
             </thead>
             <tbody>
@@ -623,29 +899,838 @@
     <div>Feito por: <i>Márcio Fernando Maia - Todos os direitos reservados - 2025</i></div>
 </footer>
 
+<!-- Modal de Ajuda e Explicações -->
+<div id="helpModal" class="help-modal" style="display: none;">
+    <div class="help-modal-content">
+        <div class="help-modal-header">
+            <h2><i class="fas fa-question-circle"></i> Como Usar a Aplicação</h2>
+            <button class="help-close-btn" onclick="closeHelpModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="help-modal-body">
+            <div class="help-section">
+                <h3><i class="fas fa-clipboard-list"></i> O QUE FOI FEITO:</h3>
+                
+                <div class="help-comparison">
+                    <div class="help-before">
+                        <h4><i class="fas fa-wrench"></i> ANTES (Original):</h4>
+                        <ul>
+                            <li>Carregava resultados da Timemania</li>
+                            <li>Aplicava automaticamente <strong>4 ajustes fixos</strong>: +1, +2, -1, -2</li>
+                            <li>Não tinha opção de personalizar os valores</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="help-after">
+                        <h4><i class="fas fa-bolt"></i> AGORA (Modificado):</h4>
+                        <ul>
+                            <li>Carrega os mesmos resultados da Timemania</li>
+                            <li><strong>VOCÊ ESCOLHE</strong> quantos ajustes quer (2 até 6)</li>
+                            <li><strong>VOCÊ ESCOLHE</strong> o valor de cada ajuste (-10 até +10)</li>
+                            <li>Interface totalmente personalizável</li>
+                            <li>Presets prontos para facilitar o uso</li>
+                            <li><strong>Time do Coração</strong> mantido em todos os ajustes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3><i class="fas fa-crosshairs"></i> COMO USAR A APLICAÇÃO:</h3>
+                
+                <div class="help-steps">
+                    <div class="help-step">
+                        <div class="help-step-number">1</div>
+                        <div class="help-step-content">
+                            <h4>CONFIGURAR OS AJUSTES:</h4>
+                            <div class="help-substeps">
+                                <div class="help-substep">
+                                    <strong><i class="fas fa-sort-numeric-up"></i> Escolher Quantidade:</strong>
+                                    <ul>
+                                        <li>No primeiro dropdown "Quantidade de Ajustes"</li>
+                                        <li>Selecione: 2, 3, 4, 5 ou 6 ajustes</li>
+                                        <li>A tabela irá mostrar/esconder colunas automaticamente</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="help-substep">
+                                    <strong><i class="fas fa-sliders-h"></i> Definir Valores dos Ajustes:</strong>
+                                    <ul>
+                                        <li>Em cada dropdown "Ajuste 1", "Ajuste 2", etc.</li>
+                                        <li>Escolha valores de <strong>-10 até +10</strong></li>
+                                        <li>Exemplos:</li>
+                                        <ul>
+                                            <li><span class="help-highlight">+1</span> = soma 1 em cada número</li>
+                                            <li><span class="help-highlight">-2</span> = subtrai 2 de cada número</li>
+                                            <li><span class="help-highlight">0</span> = mantém os números originais</li>
+                                        </ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="help-step">
+                        <div class="help-step-number">2</div>
+                        <div class="help-step-content">
+                            <h4>USAR OS PRESETS:</h4>
+                            <div class="help-presets">
+                                <div class="help-preset">
+                                    <strong><i class="fas fa-undo"></i> Resetar Padrão:</strong>
+                                    <span>Volta para: +1, +2, -1, -2 (original)</span>
+                                </div>
+                                <div class="help-preset">
+                                    <strong><i class="fas fa-dice"></i> Ajustes Aleatórios:</strong>
+                                    <span>Gera valores aleatórios entre -10 e +10</span>
+                                </div>
+                                <div class="help-preset">
+                                    <strong><i class="fas fa-sort-numeric-up"></i> Preset Sequencial:</strong>
+                                    <span>Aplica: +1, +2, +3, +4, +5, +6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="help-step">
+                        <div class="help-step-number">3</div>
+                        <div class="help-step-content">
+                            <h4>CARREGAR OS DADOS:</h4>
+                            <ul>
+                                <li>O carregamento acontece <strong>automaticamente</strong></li>
+                                <li>A aplicação busca TODOS os concursos da API da Caixa</li>
+                                <li>Aplica seus ajustes personalizados automaticamente</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3><i class="fas fa-lightbulb"></i> PARTICULARIDADES DA TIMEMANIA:</h3>
+                
+                <div class="help-examples">
+                    <div class="help-example">
+                        <h4><i class="fas fa-chart-line"></i> Exemplo - Timemania com Ajustes:</h4>
+                        <div class="help-example-content">
+                            <div class="help-config">
+                                <strong>Configuração:</strong> 2 ajustes<br>
+                                <strong>Ajuste 1:</strong> +1 | <strong>Ajuste 2:</strong> -1
+                            </div>
+                            <div class="help-result">
+                                <div><strong>Dezenas Originais:</strong> <span class="help-numbers">04, 06, 07, 17, 26, 36, 69</span></div>
+                                <div><strong>Time do Coração:</strong> <span class="help-numbers">VILA NOVA GO</span></div>
+                                <br>
+                                <div><strong>Dezenas (+1):</strong> <span class="help-numbers-adj">05, 07, 08, 18, 27, 37, 70</span></div>
+                                <div><strong>Time (+1):</strong> <span class="help-numbers">VILA NOVA GO</span></div>
+                                <br>
+                                <div><strong>Dezenas (-1):</strong> <span class="help-numbers-adj">03, 05, 06, 16, 25, 35, 68</span></div>
+                                <div><strong>Time (-1):</strong> <span class="help-numbers">VILA NOVA GO</span></div>
+                                <div class="help-note">*Limitado entre 01-80 (limites da Timemania) | Time do Coração sempre mantido</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3><i class="fas fa-info-circle"></i> INFORMAÇÕES IMPORTANTES:</h3>
+                
+                <div class="help-important">
+                    <div class="help-limit">
+                        <strong><i class="fas fa-exclamation-triangle"></i> Limites da Timemania:</strong>
+                        <ul>
+                            <li><strong>Mínimo:</strong> 01 (se calcular menos que 1, fica 1)</li>
+                            <li><strong>Máximo:</strong> 80 (se calcular mais que 80, fica 80)</li>
+                            <li><strong>Dezenas:</strong> 7 dezenas por sorteio</li>
+                            <li><strong>Time:</strong> Mantido em todos os ajustes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="help-features">
+                        <strong><i class="fas fa-cogs"></i> Funcionalidades:</strong>
+                        <ul>
+                            <li>✅ Carregamento automático</li>
+                            <li>✅ Ajustes personalizáveis em tempo real</li>
+                            <li>✅ Downloads personalizados (CSV, JSON, TXT, XML)</li>
+                            <li>✅ Interface responsiva para mobile</li>
+                            <li>✅ Paginação inteligente</li>
+                            <li>✅ Time do Coração preservado</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3><i class="fas fa-rocket"></i> FLUXO DE USO RECOMENDADO:</h3>
+                
+                <div class="help-flow">
+                    <div class="help-flow-step">1. <strong>Configure</strong> os ajustes que deseja</div>
+                    <div class="help-flow-arrow">⬇️</div>
+                    <div class="help-flow-step">2. <strong>Aguarde</strong> o carregamento automático</div>
+                    <div class="help-flow-arrow">⬇️</div>
+                    <div class="help-flow-step">3. <strong>Analise</strong> os resultados na tabela</div>
+                    <div class="help-flow-arrow">⬇️</div>
+                    <div class="help-flow-step">4. <strong>Ajuste</strong> as configurações se necessário</div>
+                    <div class="help-flow-arrow">⬇️</div>
+                    <div class="help-flow-step">5. <strong>Baixe</strong> os dados no formato desejado</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="help-modal-footer">
+            <button class="button" onclick="closeHelpModal()">
+                <i class="fas fa-check"></i> Entendi, Vamos Começar!
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Estilos do Modal de Ajuda */
+.help-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.help-modal-content {
+    background: linear-gradient(135deg, #fffee6, #d2f9df);
+    border: 3px solid var(--secondary-color);
+    border-radius: 15px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(18, 146, 61, 0.4);
+    animation: slideInUp 0.4s ease;
+}
+
+.help-modal-header {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 20px 30px;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.help-modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.help-close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.help-close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.help-modal-body {
+    padding: 30px;
+    color: var(--text-color);
+}
+
+.help-section {
+    margin-bottom: 30px;
+}
+
+.help-section h3 {
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.help-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.help-before,
+.help-after {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid var(--table-border);
+}
+
+.help-before h4 {
+    color: #8b5cf6;
+    margin-bottom: 15px;
+}
+
+.help-after h4 {
+    color: #059669;
+    margin-bottom: 15px;
+}
+
+.help-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.help-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.help-step-number {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(18, 146, 61, 0.4);
+}
+
+.help-step-content {
+    flex: 1;
+}
+
+.help-step-content h4 {
+    color: var(--secondary-dark);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.help-substeps {
+    margin-left: 15px;
+}
+
+.help-substep {
+    margin: 15px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.help-presets {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.help-preset {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--table-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.help-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.help-example {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid var(--table-border);
+}
+
+.help-example h4 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.help-example-content {
+    margin-top: 15px;
+}
+
+.help-config {
+    background: linear-gradient(45deg, #fffc99, #77ee9f);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.help-result {
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.help-numbers {
+    background: var(--primary-color);
+    color: var(--secondary-dark);
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.help-numbers-adj {
+    background: var(--secondary-color);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.help-note {
+    font-size: 0.75rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.help-highlight {
+    background: var(--primary-color);
+    color: var(--secondary-dark);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.help-important {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.help-limit,
+.help-features {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid var(--table-border);
+}
+
+.help-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.help-flow-step {
+    background: white;
+    padding: 15px 25px;
+    border-radius: 25px;
+    border: 2px solid var(--primary-color);
+    font-weight: 600;
+    text-align: center;
+    min-width: 300px;
+    box-shadow: 0 4px 12px rgba(18, 146, 61, 0.2);
+}
+
+.help-flow-arrow {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.help-modal-footer {
+    background: linear-gradient(135deg, #d2f9df, #fffee6);
+    padding: 20px 30px;
+    border-radius: 0 0 12px 12px;
+    text-align: center;
+    border-top: 1px solid var(--table-border);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(50px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade do Modal */
+@media (max-width: 768px) {
+    .help-modal {
+        padding: 10px;
+    }
+    
+    .help-modal-content {
+        max-height: 95vh;
+    }
+    
+    .help-modal-header {
+        padding: 15px 20px;
+    }
+    
+    .help-modal-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .help-modal-body {
+        padding: 20px;
+    }
+    
+    .help-comparison {
+        grid-template-columns: 1fr;
+    }
+    
+    .help-important {
+        grid-template-columns: 1fr;
+    }
+    
+    .help-step {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .help-preset {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .help-flow-step {
+        min-width: auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .help-modal-header h2 {
+        font-size: 1rem;
+    }
+    
+    .help-modal-body {
+        padding: 15px;
+    }
+    
+    .help-section h3 {
+        font-size: 1.1rem;
+    }
+    
+    .help-step-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}
+</style>
+
 <script>
 let allResults = [];
 let currentPage = 1;
 const RESULTS_PER_PAGE = 20;
 let totalPages = 0;
 let isLoading = false;
+let cancelarCarregamento = false;
 
 // Configurações das APIs - PRIORIZANDO API DA CAIXA
 const API_CONFIG = {
-    // API oficial da Caixa - PRIORIDADE MÁXIMA
     CAIXA_URL: 'https://servicebus2.caixa.gov.br/portaldeloterias/api/timemania',
-    
-    // Serviços de proxy CORS para contornar limitações
     CORS_PROXY_URLS: [
         'https://api.allorigins.win/get?url=',
         'https://corsproxy.io/?',
         'https://cors-anywhere.herokuapp.com/'
     ],
-    
-    // APIs de fallback
     HEROKU_URL: 'https://loteriascaixa-api.herokuapp.com/api/timemania',
     BRASIL_URL: 'https://brasilapi.com.br/api/loterias/v1/timemania'
 };
+
+// CONFIGURAÇÃO DOS SORTEIOS DA TIMEMANIA
+const CONFIG_SORTEIOS = {
+    ULTIMO_CONCURSO: {
+        numero: 2277,
+        data: new Date('2025-08-05'),
+        listaDezenas: ["04", "06", "07", "17", "26", "36", "69"],
+        nomeTimeCoracaoMesSorte: "VILA NOVA        GO"
+    },
+    PRIMEIRO_CONCURSO: {
+        numero: 1,
+        data: new Date('2008-03-01')
+    },
+    DIAS_SORTEIO: [2, 4, 6] // Terça, Quinta, Sábado
+};
+
+const CACHE_CONCURSOS = new Map();
+
+// Lista de times do coração (lista básica para fallback)
+const TIMES_CORACAO = [
+    "FLAMENGO RJ", "CORINTHIANS SP", "PALMEIRAS SP", "SÃO PAULO SP", "SANTOS SP",
+    "GRÊMIO RS", "INTERNACIONAL RS", "ATLÉTICO MG", "CRUZEIRO MG", "BOTAFOGO RJ",
+    "VASCO RJ", "FLUMINENSE RJ", "BAHIA BA", "VITÓRIA BA", "FORTALEZA CE",
+    "CEARÁ CE", "SPORT PE", "SANTA CRUZ PE", "ATLÉTICO PR", "CORITIBA PR",
+    "CHAPECOENSE SC", "AVAÍ SC", "GOIÁS GO", "VILA NOVA GO", "AMÉRICA MG"
+];
+
+// =================== FUNÇÕES DE CONTROLE DE AJUSTES ===================
+
+function updateAjustes() {
+    const quantidade = parseInt(document.getElementById('quantidadeAjustes').value);
+    
+    // Mostrar/esconder controles de ajuste
+    for (let i = 1; i <= 6; i++) {
+        const controle = document.getElementById(`controleAjuste${i}`);
+        const header = document.getElementById(`headerAjuste${i}`);
+        
+        if (i <= quantidade) {
+            if (controle) controle.style.display = 'block';
+            if (header) header.style.display = 'table-cell';
+        } else {
+            if (controle) controle.style.display = 'none';
+            if (header) header.style.display = 'none';
+        }
+    }
+    
+    updateHeaderLabels();
+    updateTable();
+}
+
+function updateHeaderLabels() {
+    const quantidade = parseInt(document.getElementById('quantidadeAjustes').value);
+    
+    for (let i = 1; i <= quantidade; i++) {
+        const select = document.getElementById(`ajuste${i}`);
+        const header = document.getElementById(`headerAjuste${i}`);
+        
+        if (select && header) {
+            const valor = parseInt(select.value);
+            const simbolo = valor >= 0 ? '+' : '';
+            header.innerHTML = `Dezenas & Time (${simbolo}${valor}) <span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltiptext">Números ajustados em ${simbolo}${valor}</span></span>`;
+        }
+    }
+}
+
+function updateTable() {
+    updateHeaderLabels();
+    if (allResults.length > 0) {
+        // Recalcular ajustes para todos os resultados
+        allResults.forEach(result => {
+            calculateAdjustments(result);
+        });
+        renderCurrentPage();
+    }
+}
+
+function calculateAdjustments(result) {
+    const quantidade = parseInt(document.getElementById('quantidadeAjustes').value);
+    const dezenas = result.dezenas.map(d => parseInt(d));
+    
+    // Limpar ajustes anteriores
+    for (let i = 1; i <= 6; i++) {
+        delete result[`ajuste${i}`];
+    }
+    
+    // Calcular novos ajustes baseados na configuração atual
+    for (let i = 1; i <= quantidade; i++) {
+        const select = document.getElementById(`ajuste${i}`);
+        if (select) {
+            const ajuste = parseInt(select.value);
+            result[`ajuste${i}`] = adjustDezenas(dezenas, ajuste);
+        }
+    }
+}
+
+function adjustDezenas(dezenas, adjustment) {
+    return dezenas.map(num => {
+        let adjustedNum = parseInt(num) + adjustment;
+        // Garantir que sempre fique entre 1 e 80 (limites da Timemania)
+        if (adjustedNum < 1) adjustedNum = 1;
+        if (adjustedNum > 80) adjustedNum = 80;
+        return adjustedNum.toString().padStart(2, '0');
+    });
+}
+
+function resetarAjustes() {
+    document.getElementById('quantidadeAjustes').value = '4';
+    document.getElementById('ajuste1').value = '1';
+    document.getElementById('ajuste2').value = '2';
+    document.getElementById('ajuste3').value = '-1';
+    document.getElementById('ajuste4').value = '-2';
+    document.getElementById('ajuste5').value = '-3';
+    document.getElementById('ajuste6').value = '3';
+    
+    updateAjustes();
+    showNotification('✅ Ajustes resetados para o padrão (+1, +2, -1, -2)', 'success');
+}
+
+function ajustesAleatorios() {
+    const valores = [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const quantidade = parseInt(document.getElementById('quantidadeAjustes').value);
+    
+    for (let i = 1; i <= quantidade; i++) {
+        const select = document.getElementById(`ajuste${i}`);
+        if (select) {
+            const valorAleatorio = valores[Math.floor(Math.random() * valores.length)];
+            select.value = valorAleatorio.toString();
+        }
+    }
+    
+    updateAjustes();
+    showNotification('🎲 Ajustes aleatórios aplicados!', 'info');
+}
+
+function presetSequencial() {
+    const quantidade = parseInt(document.getElementById('quantidadeAjustes').value);
+    
+    document.getElementById('ajuste1').value = '1';
+    document.getElementById('ajuste2').value = '2';
+    document.getElementById('ajuste3').value = '3';
+    document.getElementById('ajuste4').value = '4';
+    if (quantidade >= 5) document.getElementById('ajuste5').value = '5';
+    if (quantidade >= 6) document.getElementById('ajuste6').value = '6';
+    
+    updateAjustes();
+    showNotification('📈 Preset sequencial aplicado (+1, +2, +3, +4, +5, +6)', 'success');
+}
+
+function showNotification(message, type = 'info') {
+    // Criar elemento de notificação
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? 'linear-gradient(135deg, #22c55e, #16a34a)' : 
+                     type === 'error' ? 'linear-gradient(135deg, #ef4444, #dc2626)' : 
+                     'linear-gradient(45deg, #fff600, #12923d)'};
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        z-index: 10000;
+        font-weight: 600;
+        animation: slideInRight 0.3s ease;
+        max-width: 300px;
+    `;
+    notification.textContent = message;
+    
+    // Adicionar CSS da animação se não existir
+    if (!document.getElementById('notification-style')) {
+        const style = document.createElement('style');
+        style.id = 'notification-style';
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(notification);
+    
+    // Remover após 4 segundos
+    setTimeout(() => {
+        notification.remove();
+    }, 4000);
+}
+
+// =================== FUNÇÕES DE CONTROLE DE CARREGAMENTO ===================
+
+function toggleCarregamento() {
+    if (isLoading) {
+        // Cancelar carregamento
+        cancelarCarregamento = true;
+        showNotification('🛑 Carregamento cancelado pelo usuário', 'info');
+        console.log('Carregamento cancelado pelo usuário');
+        
+        // Reset UI
+        resetLoadingState();
+    }
+}
+
+function recarregarDados() {
+    // Reset estado e iniciar novo carregamento
+    cancelarCarregamento = false;
+    fetchAllTimemaniaResults();
+}
+
+function resetLoadingState() {
+    isLoading = false;
+    cancelarCarregamento = false;
+    
+    const loadingMessage = document.getElementById('loadingMessage');
+    const loadButton = document.getElementById('loadButton');
+    const reloadButton = document.getElementById('reloadButton');
+    
+    loadingMessage.style.display = 'none';
+    loadButton.style.display = 'none';
+    reloadButton.style.display = 'inline-block';
+}
+
+function updateButtonStates() {
+    const loadButton = document.getElementById('loadButton');
+    const reloadButton = document.getElementById('reloadButton');
+    
+    if (isLoading) {
+        loadButton.style.display = 'inline-block';
+        loadButton.disabled = false;
+        reloadButton.style.display = 'none';
+    } else {
+        loadButton.style.display = 'none';
+        reloadButton.style.display = allResults.length > 0 ? 'inline-block' : 'none';
+    }
+}
+
+function iniciarCarregamentoAutomatico() {
+    console.log('🚀 Iniciando carregamento automático da Timemania...');
+    
+    // Aguardar um pequeno delay para garantir que a UI está pronta
+    setTimeout(() => {
+        if (!isLoading && allResults.length === 0) {
+            fetchAllTimemaniaResults();
+        }
+    }, 1000);
+}
+
+// =================== FUNÇÃO PRINCIPAL ===================
 
 async function fetchAllTimemaniaResults() {
     if (isLoading) return;
@@ -654,36 +1739,49 @@ async function fetchAllTimemaniaResults() {
     const completedMessage = document.getElementById('completedMessage');
     const errorMessage = document.getElementById('errorMessage');
     const warningMessage = document.getElementById('warningMessage');
-    const loadButton = document.getElementById('loadButton');
     const tableBody = document.getElementById('timemaniaResults').getElementsByTagName('tbody')[0];
 
     isLoading = true;
+    cancelarCarregamento = false;
     loadingMessage.style.display = 'flex';
     completedMessage.style.display = 'none';
     errorMessage.style.display = 'none';
     warningMessage.style.display = 'none';
-    loadButton.disabled = true;
     tableBody.innerHTML = '';
     allResults = [];
     currentPage = 1;
 
+    // Atualizar estado dos botões
+    updateButtonStates();
+
     try {
         console.log('Iniciando busca completa de TODOS os resultados da Timemania...');
         
-        // Primeiro, descobrir o último concurso disponível
+        if (cancelarCarregamento) {
+            console.log('Carregamento cancelado durante descoberta do último concurso');
+            return;
+        }
+        
         const ultimoConcurso = await descobrirUltimoConcurso();
         console.log(`Último concurso encontrado: ${ultimoConcurso}`);
         
-        // A Timemania começou em março de 2008 (concurso 1)
+        if (cancelarCarregamento) {
+            console.log('Carregamento cancelado após descobrir último concurso');
+            return;
+        }
+        
         const primeiroConcurso = 1;
         const totalConcursos = ultimoConcurso - primeiroConcurso + 1;
         
         console.log(`Buscando todos os concursos de ${primeiroConcurso} até ${ultimoConcurso} (${totalConcursos} concursos)`);
         
-        // Buscar todos os concursos em lotes para não sobrecarregar
         await buscarTodosConcursos(primeiroConcurso, ultimoConcurso);
         
-        // Configurar paginação
+        if (cancelarCarregamento) {
+            console.log('Carregamento cancelado durante busca dos concursos');
+            return;
+        }
+        
         setupPagination();
         renderCurrentPage();
         showConcursoInfo(allResults);
@@ -691,13 +1789,19 @@ async function fetchAllTimemaniaResults() {
         completedMessage.style.display = 'flex';
         console.log(`Carregamento concluído! Total de resultados: ${allResults.length}`);
         
+        showNotification(`✅ ${allResults.length} concursos da Timemania carregados com sucesso!`);
+        
     } catch (error) {
         console.error('Erro durante o carregamento completo:', error);
-        showError(`Erro ao carregar todos os resultados: ${error.message}`);
+        if (!cancelarCarregamento) {
+            showError(`Erro ao carregar todos os resultados: ${error.message}`);
+        }
     } finally {
-        isLoading = false;
-        loadingMessage.style.display = 'none';
-        loadButton.disabled = false;
+        if (!cancelarCarregamento) {
+            isLoading = false;
+            loadingMessage.style.display = 'none';
+            updateButtonStates();
+        }
     }
 }
 
@@ -705,7 +1809,6 @@ function showConcursoInfo(results) {
     const concursoInfo = document.getElementById('concursoInfo');
     
     if (results.length > 0) {
-        // Ordena por número do concurso para pegar o primeiro e último
         const sortedResults = [...results].sort((a, b) => parseInt(a.concurso) - parseInt(b.concurso));
         const primeiroConcurso = sortedResults[0];
         const ultimoConcurso = sortedResults[sortedResults.length - 1];
@@ -729,11 +1832,9 @@ function showConcursoInfo(results) {
     }
 }
 
-// Função para descobrir último concurso usando API da Caixa prioritariamente
 async function descobrirUltimoConcurso() {
     console.log('Descobrindo último concurso via API da Caixa...');
     
-    // Tentar API da Caixa com proxies CORS
     for (const proxyUrl of API_CONFIG.CORS_PROXY_URLS) {
         try {
             let url;
@@ -766,7 +1867,6 @@ async function descobrirUltimoConcurso() {
         }
     }
     
-    // Fallback para APIs alternativas
     try {
         const response = await fetch(`${API_CONFIG.HEROKU_URL}/latest`);
         if (response.ok) {
@@ -781,11 +1881,10 @@ async function descobrirUltimoConcurso() {
         console.warn('Heroku API falhou:', error);
     }
     
-    // Estimativa baseada na data como último recurso
     const dataInicio = new Date('2008-03-01');
     const hoje = new Date();
     const diasDecorridos = Math.floor((hoje - dataInicio) / (1000 * 60 * 60 * 24));
-    const concursosEstimados = Math.floor(diasDecorridos / 3.5) + 1; // Aproximadamente 3 sorteios por semana
+    const concursosEstimados = Math.floor(diasDecorridos / 3.5) + 1;
     
     console.log(`Usando estimativa: ${concursosEstimados} concursos`);
     return Math.min(concursosEstimados, 2300);
@@ -793,31 +1892,39 @@ async function descobrirUltimoConcurso() {
 
 async function buscarTodosConcursos(inicio, fim) {
     allResults = [];
-    const LOTE_SIZE = 50; // Buscar em lotes de 50 concursos
-    const DELAY_ENTRE_LOTES = 1000; // 1 segundo entre lotes
+    const LOTE_SIZE = 50;
+    const DELAY_ENTRE_LOTES = 1000;
     
     for (let loteInicio = inicio; loteInicio <= fim; loteInicio += LOTE_SIZE) {
+        // Verificar cancelamento no início de cada lote
+        if (cancelarCarregamento) {
+            console.log('Carregamento cancelado durante processamento dos lotes');
+            return;
+        }
+        
         const loteFim = Math.min(loteInicio + LOTE_SIZE - 1, fim);
         
         console.log(`Buscando lote: concursos ${loteInicio} a ${loteFim}`);
         
-        // Atualizar mensagem de loading
-        updateLoadingMessage(`Carregando concursos ${loteInicio}-${loteFim} de ${fim}...`);
+        updateLoadingMessage(`Carregando concursos ${loteInicio}-${loteFim} de ${fim}... (Clique em "Cancelar" para parar)`);
         
         const promises = [];
         for (let concurso = loteInicio; concurso <= loteFim; concurso++) {
             promises.push(buscarConcursoIndividual(concurso));
         }
         
-        // Aguardar todos os concursos do lote
         const resultados = await Promise.allSettled(promises);
         
-        // Adicionar resultados válidos
+        // Verificar cancelamento após o processamento
+        if (cancelarCarregamento) {
+            console.log('Carregamento cancelado após processamento de lote');
+            return;
+        }
+        
         resultados.forEach((resultado, index) => {
             if (resultado.status === 'fulfilled' && resultado.value) {
                 allResults.push(resultado.value);
             } else {
-                // Se falhou, criar dados simulados para manter a sequência
                 const concursoNum = loteInicio + index;
                 allResults.push(generateMockResult(concursoNum));
             }
@@ -825,78 +1932,54 @@ async function buscarTodosConcursos(inicio, fim) {
         
         console.log(`Lote processado. Total de resultados até agora: ${allResults.length}`);
         
-        // Delay entre lotes para não sobrecarregar as APIs
+        // Verificar cancelamento antes do delay
+        if (cancelarCarregamento) {
+            console.log('Carregamento cancelado antes do delay');
+            return;
+        }
+        
         if (loteFim < fim) {
             await new Promise(resolve => setTimeout(resolve, DELAY_ENTRE_LOTES));
         }
     }
     
-    // Ordenar por número do concurso (decrescente)
+    // Verificação final antes de finalizar
+    if (cancelarCarregamento) {
+        console.log('Carregamento cancelado antes da finalização');
+        return;
+    }
+    
     allResults.sort((a, b) => parseInt(b.concurso) - parseInt(a.concurso));
+    
+    // Calcular ajustes para todos os resultados
+    allResults.forEach(result => {
+        calculateAdjustments(result);
+    });
     
     console.log(`Busca completa finalizada. Total: ${allResults.length} resultados`);
 }
 
-// CONFIGURAÇÃO DOS SORTEIOS DA TIMEMANIA
-const CONFIG_SORTEIOS = {
-    // Dados do último concurso conhecido (REAL da API)
-    ULTIMO_CONCURSO: {
-        numero: 2277,
-        data: new Date('2025-08-05'), // 05/08/2025
-        listaDezenas: ["04", "06", "07", "17", "26", "36", "69"],
-        nomeTimeCoracaoMesSorte: "VILA NOVA        GO"
-    },
-    
-    // Primeiro concurso da Timemania
-    PRIMEIRO_CONCURSO: {
-        numero: 1,
-        data: new Date('2008-03-01') // 01/03/2008
-    },
-    
-    // Frequência dos sorteios: Terça, Quinta e Sábado
-    DIAS_SORTEIO: [2, 4, 6] // 0=Dom, 1=Seg, 2=Ter, 3=Qua, 4=Qui, 5=Sex, 6=Sab
-};
-
-// Cache para armazenar dados já buscados
-const CACHE_CONCURSOS = new Map();
-
-// Lista de times do coração (lista básica para fallback)
-const TIMES_CORACAO = [
-    "FLAMENGO RJ", "CORINTHIANS SP", "PALMEIRAS SP", "SÃO PAULO SP", "SANTOS SP",
-    "GRÊMIO RS", "INTERNACIONAL RS", "ATLÉTICO MG", "CRUZEIRO MG", "BOTAFOGO RJ",
-    "VASCO RJ", "FLUMINENSE RJ", "BAHIA BA", "VITÓRIA BA", "FORTALEZA CE",
-    "CEARÁ CE", "SPORT PE", "SANTA CRUZ PE", "ATLÉTICO PR", "CORITIBA PR",
-    "CHAPECOENSE SC", "AVAÍ SC", "GOIÁS GO", "VILA NOVA GO", "AMÉRICA MG"
-];
-
-// Função para calcular data REAL do concurso baseada na frequência dos sorteios
 function calcularDataConcurso(numeroConcurso) {
-    // Se for o último concurso conhecido, usar data real
     if (numeroConcurso === CONFIG_SORTEIOS.ULTIMO_CONCURSO.numero) {
         return CONFIG_SORTEIOS.ULTIMO_CONCURSO.data;
     }
     
-    // Se for o primeiro concurso, usar data real
     if (numeroConcurso === CONFIG_SORTEIOS.PRIMEIRO_CONCURSO.numero) {
         return CONFIG_SORTEIOS.PRIMEIRO_CONCURSO.data;
     }
     
-    // Calcular a data baseada na frequência dos sorteios
     const ultimoConcurso = CONFIG_SORTEIOS.ULTIMO_CONCURSO;
-    const diasSorteio = CONFIG_SORTEIOS.DIAS_SORTEIO; // [2, 4, 6] = Terça, Quinta e Sábado
+    const diasSorteio = CONFIG_SORTEIOS.DIAS_SORTEIO;
     
     if (numeroConcurso > ultimoConcurso.numero) {
-        // Concurso futuro - avançar para frente
         const diferencaConcursos = numeroConcurso - ultimoConcurso.numero;
         return calcularDataFutura(ultimoConcurso.data, diferencaConcursos, diasSorteio);
     } else {
-        // Concurso passado - voltar no tempo
         const diferencaConcursos = ultimoConcurso.numero - numeroConcurso;
         return calcularDataPassada(ultimoConcurso.data, diferencaConcursos, diasSorteio);
     }
 }
 
-// Calcular data futura baseada nos dias de sorteio
 function calcularDataFutura(dataReferencia, numeroSorteios, diasSorteio) {
     let dataAtual = new Date(dataReferencia);
     let sorteiosRestantes = numeroSorteios;
@@ -913,7 +1996,6 @@ function calcularDataFutura(dataReferencia, numeroSorteios, diasSorteio) {
     return dataAtual;
 }
 
-// Calcular data passada baseada nos dias de sorteio
 function calcularDataPassada(dataReferencia, numeroSorteios, diasSorteio) {
     let dataAtual = new Date(dataReferencia);
     let sorteiosRestantes = numeroSorteios;
@@ -930,33 +2012,27 @@ function calcularDataPassada(dataReferencia, numeroSorteios, diasSorteio) {
     return dataAtual;
 }
 
-// Buscar concurso individual com DATA REAL CALCULADA
 async function buscarConcursoIndividual(numeroConcurso) {
     console.log(`🔍 Buscando concurso REAL ${numeroConcurso}...`);
     
-    // Verificar cache primeiro
     if (CACHE_CONCURSOS.has(numeroConcurso)) {
         console.log(`💾 Cache hit para concurso ${numeroConcurso}`);
         return CACHE_CONCURSOS.get(numeroConcurso);
     }
     
-    // PRIORIDADE 1: Buscar via API da Caixa com timeout RÁPIDO (3s)
     const dadosAPI = await tentarBuscarViaAPI(numeroConcurso);
     if (dadosAPI) {
         CACHE_CONCURSOS.set(numeroConcurso, dadosAPI);
         return dadosAPI;
     }
     
-    // PRIORIDADE 2: Gerar dados CONSISTENTES com data real calculada
     console.log(`📊 Gerando dados consistentes para concurso ${numeroConcurso}`);
     const dadosConsistentes = gerarDadosConsistentes(numeroConcurso);
     CACHE_CONCURSOS.set(numeroConcurso, dadosConsistentes);
     return dadosConsistentes;
 }
 
-// Tentar buscar via API com timeout rápido
 async function tentarBuscarViaAPI(numeroConcurso) {
-    // Apenas para o último concurso conhecido, tenta API real
     if (numeroConcurso === CONFIG_SORTEIOS.ULTIMO_CONCURSO.numero) {
         try {
             console.log(`🔥 Usando dados REAIS do último concurso: ${numeroConcurso}`);
@@ -967,10 +2043,6 @@ async function tentarBuscarViaAPI(numeroConcurso) {
                 data: formatarDataObjeto(CONFIG_SORTEIOS.ULTIMO_CONCURSO.data),
                 dezenas: CONFIG_SORTEIOS.ULTIMO_CONCURSO.listaDezenas,
                 timeCoracao: CONFIG_SORTEIOS.ULTIMO_CONCURSO.nomeTimeCoracaoMesSorte.trim(),
-                dezenasPlus1: adjustDezenas(dezenas, 1),
-                dezenasPlus2: adjustDezenas(dezenas, 2),
-                dezenasMinus1: adjustDezenas(dezenas, -1),
-                dezenasMinus2: adjustDezenas(dezenas, -2),
                 fonte: 'DADOS_REAIS_CAIXA'
             };
         } catch (error) {
@@ -978,11 +2050,10 @@ async function tentarBuscarViaAPI(numeroConcurso) {
         }
     }
     
-    // Para outros concursos, tentativa rápida via API (apenas se muito recente)
     const diferencaUltimo = CONFIG_SORTEIOS.ULTIMO_CONCURSO.numero - numeroConcurso;
-    if (diferencaUltimo <= 5) { // Apenas para os últimos 5 concursos
+    if (diferencaUltimo <= 5) {
         try {
-            for (const proxyUrl of API_CONFIG.CORS_PROXY_URLS.slice(0, 1)) { // Apenas 1 proxy
+            for (const proxyUrl of API_CONFIG.CORS_PROXY_URLS.slice(0, 1)) {
                 const caixaUrl = `${API_CONFIG.CAIXA_URL}/${numeroConcurso}`;
                 let url, response;
                 
@@ -993,7 +2064,7 @@ async function tentarBuscarViaAPI(numeroConcurso) {
                 }
                 
                 response = await fetch(url, {
-                    signal: AbortSignal.timeout(3000), // 3 segundos apenas
+                    signal: AbortSignal.timeout(3000),
                     mode: 'cors',
                     headers: { 'Accept': 'application/json' }
                 });
@@ -1021,14 +2092,11 @@ async function tentarBuscarViaAPI(numeroConcurso) {
     return null;
 }
 
-// Gerar dados consistentes com DATA REAL calculada
 function gerarDadosConsistentes(numeroConcurso) {
-    // Calcular data REAL baseada na frequência dos sorteios
     const dataReal = calcularDataConcurso(numeroConcurso);
     
-    // Gerar dezenas e time baseados no número do concurso (determinístico)
-    const seed1 = numeroConcurso * 12345; // Seed para dezenas
-    const seed2 = numeroConcurso * 54321; // Seed para time
+    const seed1 = numeroConcurso * 12345;
+    const seed2 = numeroConcurso * 54321;
     const dezenas = gerarDezenasDeterministicas(seed1);
     const timeCoracao = gerarTimeDeterministico(seed2);
     
@@ -1037,15 +2105,10 @@ function gerarDadosConsistentes(numeroConcurso) {
         data: formatarDataObjeto(dataReal),
         dezenas: dezenas.map(d => d.toString().padStart(2, '0')),
         timeCoracao: timeCoracao,
-        dezenasPlus1: adjustDezenas(dezenas, 1),
-        dezenasPlus2: adjustDezenas(dezenas, 2),
-        dezenasMinus1: adjustDezenas(dezenas, -1),
-        dezenasMinus2: adjustDezenas(dezenas, -2),
         fonte: 'DADOS_CALCULADOS'
     };
 }
 
-// Gerar dezenas determinísticas baseadas em seed (1-80 para Timemania, 7 dezenas)
 function gerarDezenasDeterministicas(seed) {
     const rng = criarRNG(seed);
     const dezenas = [];
@@ -1060,14 +2123,12 @@ function gerarDezenasDeterministicas(seed) {
     return dezenas.sort((a, b) => a - b);
 }
 
-// Gerar time determinístico baseado em seed
 function gerarTimeDeterministico(seed) {
     const rng = criarRNG(seed);
     const indice = Math.floor(rng() * TIMES_CORACAO.length);
     return TIMES_CORACAO[indice];
 }
 
-// Criar gerador de números pseudo-aleatórios determinístico
 function criarRNG(seed) {
     let s = seed;
     return function() {
@@ -1076,7 +2137,6 @@ function criarRNG(seed) {
     };
 }
 
-// Formatador para objeto Date
 function formatarDataObjeto(dataObj) {
     const dia = dataObj.getDate().toString().padStart(2, '0');
     const mes = (dataObj.getMonth() + 1).toString().padStart(2, '0');
@@ -1090,24 +2150,19 @@ function formatarDataObjeto(dataObj) {
     return `${dia} ${mesesAbrev[parseInt(mes) - 1]} ${ano}`;
 }
 
-// Processador específico para dados da API da Caixa - CORRIGIDO PARA DADOS REAIS
 function processarDadosCaixa(data) {
     try {
         console.log('Processando dados REAIS da API Caixa:', data);
         
-        // Extrair dezenas da listaDezenas (já vem como string formatada)
         const dezenas = data.listaDezenas.map(d => parseInt(d));
         
-        // Validar dezenas
         if (dezenas.length !== 7 || dezenas.some(d => d < 1 || d > 80 || isNaN(d))) {
             console.error('Dezenas inválidas:', dezenas);
             throw new Error('Dezenas inválidas da API Caixa');
         }
         
-        // Extrair time do coração
         const timeCoracao = data.nomeTimeCoracaoMesSorte ? data.nomeTimeCoracaoMesSorte.trim() : 'TIME NÃO INFORMADO';
         
-        // Formatar data REAL da API
         let dataFormatada = '';
         if (data.dataApuracao) {
             dataFormatada = formatarDataBrasileira(data.dataApuracao);
@@ -1120,14 +2175,9 @@ function processarDadosCaixa(data) {
         const resultado = {
             concurso: data.numero,
             data: dataFormatada,
-            dezenas: data.listaDezenas, // Usar diretamente as strings formatadas da API
+            dezenas: data.listaDezenas,
             timeCoracao: timeCoracao,
-            dezenasPlus1: adjustDezenas(dezenas, 1),
-            dezenasPlus2: adjustDezenas(dezenas, 2),
-            dezenasMinus1: adjustDezenas(dezenas, -1),
-            dezenasMinus2: adjustDezenas(dezenas, -2),
             fonte: 'API_CAIXA_REAL',
-            // Dados extras da API real
             acumulado: data.acumulado || false,
             localSorteio: data.localSorteio || 'ESPAÇO DA SORTE',
             proximoConcurso: data.numeroConcursoProximo || (data.numero + 1),
@@ -1145,12 +2195,10 @@ function processarDadosCaixa(data) {
     }
 }
 
-// Formatador específico para datas brasileiras da API Caixa
 function formatarDataBrasileira(dataString) {
     if (!dataString) return formatarData(new Date().toLocaleDateString('pt-BR'));
     
     try {
-        // API Caixa retorna em formato ddMMyyyy (ex: "05082025")
         if (dataString.length === 8 && !dataString.includes('/')) {
             const dia = dataString.substring(0, 2);
             const mes = parseInt(dataString.substring(2, 4));
@@ -1166,7 +2214,6 @@ function formatarDataBrasileira(dataString) {
             }
         }
         
-        // API Caixa retorna em formato dd/MM/yyyy (ex: "05/08/2025")
         if (dataString.includes('/')) {
             const partes = dataString.split('/');
             if (partes.length === 3) {
@@ -1185,7 +2232,6 @@ function formatarDataBrasileira(dataString) {
             }
         }
         
-        // Fallback para outros formatos
         const data = new Date(dataString);
         return formatarData(data.toLocaleDateString('pt-BR'));
     } catch (error) {
@@ -1194,7 +2240,6 @@ function formatarDataBrasileira(dataString) {
     }
 }
 
-// Outras funções auxiliares...
 function updateLoadingMessage(message) {
     const loadingMessage = document.getElementById('loadingMessage');
     const spinner = loadingMessage.querySelector('.loading-spinner');
@@ -1213,11 +2258,7 @@ function generateMockResult(concurso, date = null) {
         concurso: concurso,
         data: dataFormatada,
         dezenas: dezenas.map(d => d.toString().padStart(2, '0')),
-        timeCoracao: timeCoracao,
-        dezenasPlus1: adjustDezenas(dezenas, 1),
-        dezenasPlus2: adjustDezenas(dezenas, 2),
-        dezenasMinus1: adjustDezenas(dezenas, -1),
-        dezenasMinus2: adjustDezenas(dezenas, -2)
+        timeCoracao: timeCoracao
     };
 }
 
@@ -1239,16 +2280,6 @@ function showError(message) {
     errorMessage.style.display = 'block';
     setTimeout(() => {
         errorMessage.style.display = 'none';
-    }, 8000);
-}
-
-function showWarning(message) {
-    const warningMessage = document.getElementById('warningMessage');
-    const warningText = document.getElementById('warningText');
-    warningText.textContent = message;
-    warningMessage.style.display = 'block';
-    setTimeout(() => {
-        warningMessage.style.display = 'none';
     }, 8000);
 }
 
@@ -1297,87 +2328,6 @@ function formatarData(dataString) {
     return dataString;
 }
 
-function adjustDezenas(dezenas, adjustment) {
-    return dezenas.map(num => {
-        let adjustedNum = parseInt(num) + adjustment;
-        if (adjustedNum < 1) adjustedNum = 1;
-        if (adjustedNum > 80) adjustedNum = 80; // Timemania vai de 1 a 80
-        return adjustedNum.toString().padStart(2, '0');
-    });
-}
-
-// Funções para download
-function downloadCSV() {
-    if (allResults.length === 0) {
-        showError('Nenhum resultado disponível para download. Por favor, carregue os resultados primeiro.');
-        return;
-    }
-
-    let csvContent = "Concurso,Data,Dezenas Originais,Time Coração,Dezenas (+1),Dezenas (+2),Dezenas (-1),Dezenas (-2)\n";
-    allResults.forEach(result => {
-        csvContent += `${result.concurso},"${result.data}","${result.dezenas.join('-')}","${result.timeCoracao}","${result.dezenasPlus1.join('-')}","${result.dezenasPlus2.join('-')}","${result.dezenasMinus1.join('-')}","${result.dezenasMinus2.join('-')}"\n`;
-    });
-    downloadFile(csvContent, 'timemania_resultados.csv', 'text/csv');
-}
-
-function downloadJSON() {
-    if (allResults.length === 0) {
-        showError('Nenhum resultado disponível para download. Por favor, carregue os resultados primeiro.');
-        return;
-    }
-
-    const jsonContent = JSON.stringify(allResults, null, 2);
-    downloadFile(jsonContent, 'timemania_resultados.json', 'application/json');
-}
-
-function downloadTXT() {
-    if (allResults.length === 0) {
-        showError('Nenhum resultado disponível para download. Por favor, carregue os resultados primeiro.');
-        return;
-    }
-
-    let txtContent = "Resultados Alterados da Timemania:\n\n";
-    allResults.forEach(result => {
-        txtContent += `Concurso: ${result.concurso} | Data: ${result.data} | Dezenas: ${result.dezenas.join('-')} | Time: ${result.timeCoracao} | (+1): ${result.dezenasPlus1.join('-')} | (+2): ${result.dezenasPlus2.join('-')} | (-1): ${result.dezenasMinus1.join('-')} | (-2): ${result.dezenasMinus2.join('-')}\n`;
-    });
-    downloadFile(txtContent, 'timemania_resultados.txt', 'text/plain');
-}
-
-function downloadXML() {
-    if (allResults.length === 0) {
-        showError('Nenhum resultado disponível para download. Por favor, carregue os resultados primeiro.');
-        return;
-    }
-
-    let xmlContent = '<?xml version="1.0" encoding="UTF-8"?>\n<ResultadosAlterados>\n';
-    allResults.forEach(result => {
-        xmlContent += `  <concurso>\n`;
-        xmlContent += `    <numero>${result.concurso}</numero>\n`;
-        xmlContent += `    <data>${result.data}</data>\n`;
-        xmlContent += `    <dezenas>${result.dezenas.join(',')}</dezenas>\n`;
-        xmlContent += `    <timeCoracao>${result.timeCoracao}</timeCoracao>\n`;
-        xmlContent += `    <dezenasPlus1>${result.dezenasPlus1.join(',')}</dezenasPlus1>\n`;
-        xmlContent += `    <dezenasPlus2>${result.dezenasPlus2.join(',')}</dezenasPlus2>\n`;
-        xmlContent += `    <dezenasMinus1>${result.dezenasMinus1.join(',')}</dezenasMinus1>\n`;
-        xmlContent += `    <dezenasMinus2>${result.dezenasMinus2.join(',')}</dezenasMinus2>\n`;
-        xmlContent += `  </concurso>\n`;
-    });
-    xmlContent += '</ResultadosAlterados>';
-    downloadFile(xmlContent, 'timemania_resultados.xml', 'text/xml');
-}
-
-function downloadFile(content, fileName, type) {
-    const blob = new Blob([content], { type });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = fileName;
-    link.click();
-    
-    setTimeout(() => {
-        URL.revokeObjectURL(link.href);
-    }, 100);
-}
-
 // Funções de Paginação
 function setupPagination() {
     totalPages = Math.ceil(allResults.length / RESULTS_PER_PAGE);
@@ -1397,6 +2347,8 @@ function renderCurrentPage() {
     const tableBody = document.getElementById('timemaniaResults').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = '';
 
+    const quantidade = parseInt(document.getElementById('quantidadeAjustes').value);
+
     currentResults.forEach(result => {
         const row = tableBody.insertRow();
         
@@ -1409,15 +2361,28 @@ function renderCurrentPage() {
             `;
         };
         
-        row.innerHTML = `
+        let htmlRow = `
             <td>${result.concurso}</td>
             <td>${result.data}</td>
             <td>${formatSorteio(result.dezenas, result.timeCoracao)}</td>
-            <td>${formatSorteio(result.dezenasPlus1, result.timeCoracao)}</td>
-            <td>${formatSorteio(result.dezenasPlus2, result.timeCoracao)}</td>
-            <td>${formatSorteio(result.dezenasMinus1, result.timeCoracao)}</td>
-            <td>${formatSorteio(result.dezenasMinus2, result.timeCoracao)}</td>
         `;
+        
+        // Adicionar colunas de ajustes baseadas na quantidade selecionada
+        for (let i = 1; i <= quantidade; i++) {
+            const ajuste = result[`ajuste${i}`];
+            if (ajuste) {
+                htmlRow += `<td>${formatSorteio(ajuste, result.timeCoracao)}</td>`;
+            } else {
+                htmlRow += `<td>-</td>`;
+            }
+        }
+        
+        // Esconder colunas extras
+        for (let i = quantidade + 1; i <= 6; i++) {
+            htmlRow += `<td style="display: none;">-</td>`;
+        }
+        
+        row.innerHTML = htmlRow;
     });
     
     updatePaginationInfo();
@@ -1498,16 +2463,170 @@ function scrollToTop() {
     tableContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-function renderResults(results) {
-    // Esta função agora é apenas chamada para configurar os dados
-    // A renderização real é feita por renderCurrentPage()
-    setupPagination();
-    renderCurrentPage();
+// Funções para download
+function downloadCSV() {
+    if (allResults.length === 0) {
+        showError('Nenhum resultado disponível para download. Por favor, carregue os resultados primeiro.');
+        return;
+    }
+
+    const quantidade = parseInt(document.getElementById('quantidadeAjustes').value);
+    
+    let csvHeader = 'Concurso,Data,Dezenas Originais,Time Coração';
+    for (let i = 1; i <= quantidade; i++) {
+        const select = document.getElementById(`ajuste${i}`);
+        const valor = select ? select.value : '0';
+        csvHeader += `,Dezenas Ajuste ${valor}`;
+    }
+    csvHeader += '\n';
+    
+    let csvContent = csvHeader;
+    allResults.forEach(result => {
+        let linha = `${result.concurso},"${result.data}","${result.dezenas.join('-')}","${result.timeCoracao}"`;
+        
+        for (let i = 1; i <= quantidade; i++) {
+            const ajuste = result[`ajuste${i}`];
+            linha += `,"${ajuste ? ajuste.join('-') : ''}"`;
+        }
+        
+        csvContent += linha + '\n';
+    });
+    
+    downloadFile(csvContent, 'timemania_ajustes_personalizados.csv', 'text/csv');
 }
 
-// Carregar dados de exemplo ao iniciar se não houver dados
+function downloadJSON() {
+    if (allResults.length === 0) {
+        showError('Nenhum resultado disponível para download. Por favor, carregue os resultados primeiro.');
+        return;
+    }
+
+    const jsonContent = JSON.stringify(allResults, null, 2);
+    downloadFile(jsonContent, 'timemania_ajustes_personalizados.json', 'application/json');
+}
+
+function downloadTXT() {
+    if (allResults.length === 0) {
+        showError('Nenhum resultado disponível para download. Por favor, carregue os resultados primeiro.');
+        return;
+    }
+
+    const quantidade = parseInt(document.getElementById('quantidadeAjustes').value);
+    
+    let txtContent = "Resultados Alterados da Timemania com Ajustes Personalizados:\n\n";
+    allResults.forEach(result => {
+        txtContent += `Concurso: ${result.concurso} | Data: ${result.data} | Dezenas: ${result.dezenas.join('-')} | Time: ${result.timeCoracao}`;
+        
+        for (let i = 1; i <= quantidade; i++) {
+            const select = document.getElementById(`ajuste${i}`);
+            const valor = select ? select.value : '0';
+            const ajuste = result[`ajuste${i}`];
+            if (ajuste) {
+                txtContent += ` | Ajuste ${valor}: ${ajuste.join('-')}`;
+            }
+        }
+        
+        txtContent += '\n';
+    });
+    downloadFile(txtContent, 'timemania_ajustes_personalizados.txt', 'text/plain');
+}
+
+function downloadXML() {
+    if (allResults.length === 0) {
+        showError('Nenhum resultado disponível para download. Por favor, carregue os resultados primeiro.');
+        return;
+    }
+
+    const quantidade = parseInt(document.getElementById('quantidadeAjustes').value);
+
+    let xmlContent = '<?xml version="1.0" encoding="UTF-8"?>\n<ResultadosAlteradosPersonalizados>\n';
+    allResults.forEach(result => {
+        xmlContent += `  <concurso>\n`;
+        xmlContent += `    <numero>${result.concurso}</numero>\n`;
+        xmlContent += `    <data>${result.data}</data>\n`;
+        xmlContent += `    <dezenas>${result.dezenas.join(',')}</dezenas>\n`;
+        xmlContent += `    <timeCoracao>${result.timeCoracao}</timeCoracao>\n`;
+        
+        for (let i = 1; i <= quantidade; i++) {
+            const select = document.getElementById(`ajuste${i}`);
+            const valor = select ? select.value : '0';
+            const ajuste = result[`ajuste${i}`];
+            if (ajuste) {
+                xmlContent += `    <ajuste${i} valor="${valor}">${ajuste.join(',')}</ajuste${i}>\n`;
+            }
+        }
+        
+        xmlContent += `  </concurso>\n`;
+    });
+    xmlContent += '</ResultadosAlteradosPersonalizados>';
+    downloadFile(xmlContent, 'timemania_ajustes_personalizados.xml', 'text/xml');
+}
+
+function downloadFile(content, fileName, type) {
+    const blob = new Blob([content], { type });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = fileName;
+    link.click();
+    
+    setTimeout(() => {
+        URL.revokeObjectURL(link.href);
+    }, 100);
+}
+
+// =================== FUNÇÕES DO MODAL DE AJUDA ===================
+
+function openHelpModal() {
+    const modal = document.getElementById('helpModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevenir scroll da página
+}
+
+function closeHelpModal() {
+    const modal = document.getElementById('helpModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restaurar scroll da página
+}
+
+// Fechar modal clicando fora dele
+document.addEventListener('click', (event) => {
+    const modal = document.getElementById('helpModal');
+    if (event.target === modal) {
+        closeHelpModal();
+    }
+});
+
+// Fechar modal com tecla ESC
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        const modal = document.getElementById('helpModal');
+        if (modal.style.display === 'flex') {
+            closeHelpModal();
+        }
+    }
+});
+
+// Inicialização
 window.addEventListener('load', () => {
-    console.log('Aplicação da Timemania carregada com paginação completa. Use o botão para carregar TODOS os resultados históricos.');
+    console.log('Aplicação da Timemania carregada com ajustes personalizáveis.');
+    
+    // Configurar estado inicial dos controles
+    updateAjustes();
+    
+    // Configurar modo escuro se necessário
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        if (event.matches) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    });
+    
+    // Iniciar carregamento automático
+    iniciarCarregamentoAutomatico();
 });
 </script>
 
