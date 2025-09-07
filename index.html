@@ -412,23 +412,24 @@
             cursor: help;
         }
 
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 250px;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 10px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 0.85rem;
-        }
+		.tooltip .tooltiptext {
+			visibility: hidden;
+			width: 250px;
+			background-color: #555;
+			color: #fff;
+			text-align: center;
+			border-radius: 6px;
+			padding: 10px;
+			position: fixed;
+			z-index: 99999;
+			opacity: 0;
+			transition: opacity 0.3s;
+			font-size: 0.85rem;
+			box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+			border: 2px solid #4192be;
+			pointer-events: none;
+			transform: translateX(-50%) translateY(-100%);
+		}
 
         .tooltip .tooltiptext::after {
             content: "";
@@ -2628,6 +2629,42 @@ window.addEventListener('load', () => {
     // Iniciar carregamento automático
     iniciarCarregamentoAutomatico();
 });
+// Posicionamento dinâmico dos tooltips
+document.addEventListener('DOMContentLoaded', function() {
+    const tooltips = document.querySelectorAll('.tooltip');
+    
+    tooltips.forEach(tooltip => {
+        const tooltipText = tooltip.querySelector('.tooltiptext');
+        
+        tooltip.addEventListener('mouseenter', function(e) {
+            const rect = this.getBoundingClientRect();
+            const tooltipRect = tooltipText.getBoundingClientRect();
+            
+            // Posicionar acima do elemento
+            let top = rect.top - tooltipRect.height - 10;
+            let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+            
+            // Ajustar se sair da tela
+            if (left < 10) left = 10;
+            if (left + tooltipRect.width > window.innerWidth - 10) {
+                left = window.innerWidth - tooltipRect.width - 10;
+            }
+            if (top < 10) {
+                top = rect.bottom + 10; // Mostrar abaixo se não couber acima
+            }
+            
+            tooltipText.style.top = top + 'px';
+            tooltipText.style.left = left + 'px';
+        });
+        
+        tooltip.addEventListener('mouseleave', function() {
+            // Reset position
+            tooltipText.style.top = '';
+            tooltipText.style.left = '';
+        });
+    });
+});
+
 </script>
 
 </body>
