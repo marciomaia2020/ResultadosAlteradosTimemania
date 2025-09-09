@@ -19,6 +19,8 @@
             --table-odd: #ffffff;
             --text-color: #062d13;
             --footer-color: #0e712f;
+            --repetida-color: #e74c3c;
+            --repetida-bg: #ffebee;
         }
 
         * {
@@ -134,6 +136,286 @@
             outline: none;
             border-color: #12923d;
             box-shadow: 0 0 0 3px rgba(18, 146, 61, 0.2);
+        }
+
+        /* Seção de Alertas de Conferência */
+        .conferencia-section {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+            border: 2px solid #e74c3c;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(231, 76, 60, 0.3);
+            display: none;
+        }
+
+        /* Seção de Progresso da Conferência */
+        .progresso-conferencia {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            border: 2px solid #4caf50;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
+            display: none;
+        }
+
+        .progresso-title {
+            color: #2e7d32;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .progresso-barra {
+            width: 100%;
+            height: 20px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 15px 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .progresso-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            position: relative;
+        }
+
+        .progresso-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progresso-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .progresso-texto {
+            text-align: center;
+            margin: 10px 0;
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        .conferencia-title {
+            color: #c62828;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .alerta-repetida {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+            animation: pulse-alert 2s infinite;
+        }
+
+        @keyframes pulse-alert {
+            0% { box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4); }
+            50% { box-shadow: 0 6px 20px rgba(231, 76, 60, 0.7); }
+            100% { box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4); }
+        }
+
+        /* Seção de busca de repetições */
+        .busca-repeticoes {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(255, 193, 7, 0.3);
+            display: none;
+        }
+
+        .busca-title {
+            color: #856404;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .busca-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .busca-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 15px;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            color: #495057;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .busca-input:focus {
+            outline: none;
+            border-color: #856404;
+            box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.2);
+        }
+
+        .busca-btn {
+            background: #856404;
+            margin: 0;
+        }
+
+        .busca-clear {
+            background: #6c757d;
+            margin: 0;
+        }
+
+        .resultado-busca {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ffc107;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .resultado-item {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .resultado-item.repetida {
+            border-left-color: var(--repetida-color);
+            background: var(--repetida-bg);
+        }
+
+        .resultado-header {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .resultado-detalhes {
+            font-size: 0.9rem;
+            color: #6c757d;
+            line-height: 1.6;
+        }
+
+        .dezena-busca {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: var(--secondary-dark);
+            border-radius: 50%;
+            margin: 1px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border: 1px solid var(--secondary-color);
+        }
+
+        .dezena-busca.repetida {
+            background-color: var(--repetida-color);
+            color: white;
+            border-color: #c62828;
+        }
+
+        .time-busca {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin: 2px;
+            display: inline-block;
+        }
+
+        .time-busca.repetida {
+            background-color: var(--repetida-color);
+        }
+
+        .sem-resultados {
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            padding: 30px;
+        }
+
+        /* Estilo para destacar linha encontrada na busca */
+        .linha-destacada {
+            background-color: #fff3cd !important;
+            border: 3px solid #ffc107 !important;
+            animation: destacar-linha 2s ease-in-out 3;
+        }
+
+        @keyframes destacar-linha {
+            0% { background-color: #fff3cd; }
+            50% { background-color: #ffeaa7; }
+            100% { background-color: #fff3cd; }
         }
 
         .filters-container {
@@ -343,6 +625,43 @@
             background-color: rgba(18, 146, 61, 0.1);
         }
 
+        /* Destaque para linhas com combinações repetidas */
+        tr.combinacao-repetida {
+            background-color: var(--repetida-bg) !important;
+            border: 2px solid var(--repetida-color);
+            animation: pulse-row 3s infinite;
+        }
+
+        tr.combinacao-repetida:hover {
+            background-color: #ffdddd !important;
+        }
+
+        @keyframes pulse-row {
+            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+            70% { box-shadow: 0 0 0 8px rgba(231, 76, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+        }
+
+        .ajuste-repetido {
+            background-color: var(--repetida-color) !important;
+            color: white !important;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .ajuste-repetido::after {
+            content: "⚠️ JÁ SORTEADO";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #c62828;
+            color: white;
+            font-size: 0.6rem;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
         .dezena {
             display: inline-block;
             width: 28px;
@@ -359,6 +678,19 @@
             border: 2px solid var(--secondary-color);
         }
 
+        .dezena.repetida {
+            background-color: var(--repetida-color);
+            color: white;
+            animation: pulse-numero 2s infinite;
+            border-color: #c62828;
+        }
+
+        @keyframes pulse-numero {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
         .time-coracao {
             background-color: var(--secondary-color);
             color: white;
@@ -372,6 +704,17 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+        }
+
+        .time-coracao.repetida {
+            background-color: var(--repetida-color);
+            animation: pulse-time 2s infinite;
+        }
+
+        @keyframes pulse-time {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         .sorteio-grupo {
@@ -798,10 +1141,76 @@
             <button class="button" onclick="presetSequencial()">
                 <i class="fas fa-sort-numeric-up"></i> Preset Sequencial
             </button>
+            <button class="button" onclick="conferirCombinacoes()" id="btnConferir" style="background: #e74c3c;">
+                <i class="fas fa-search"></i> Conferir Repetições
+            </button>
         </div>
         
         <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; color: var(--secondary-dark);">
-            💡 Os números sempre ficarão entre 01 e 80 (limites da Timemania) | 🎯 Configurações aplicadas em tempo real | 🏆 Time do Coração mantido em todos os ajustes
+            💡 Os números sempre ficarão entre 01 e 80 (limites da Timemania) | 🎯 Configurações aplicadas em tempo real | 🏆 Time do Coração mantido em todos os ajustes | ⚠️ Conferência detecta combinações repetidas
+        </div>
+    </div>
+
+    <!-- Seção de Progresso da Conferência -->
+    <div class="progresso-conferencia" id="progressoConferencia">
+        <div class="progresso-title">
+            <i class="fas fa-search"></i> Conferência de Repetições em Andamento
+        </div>
+        
+        <div class="progresso-texto" id="progressoTexto">
+            Preparando análise...
+        </div>
+        
+        <div class="progresso-barra">
+            <div class="progresso-fill" id="progressoFill" style="width: 0%"></div>
+        </div>
+        
+        <div class="progresso-stats">
+            <div class="stat-item">
+                <div class="stat-number" id="statProcessados">0</div>
+                <div class="stat-label">Concursos Analisados</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="statCombinacoes">0</div>
+                <div class="stat-label">Combinações Verificadas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="statRepetidos">0</div>
+                <div class="stat-label">Repetições Encontradas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="statTempo">0s</div>
+                <div class="stat-label">Tempo Decorrido</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção de Alertas de Conferência -->
+    <div class="conferencia-section" id="conferenciaSection">
+        <div class="conferencia-title">
+            <i class="fas fa-exclamation-triangle"></i> Conferência de Combinações Repetidas
+        </div>
+        <div id="alertasRepetidos">
+            <!-- Alertas serão inseridos aqui -->
+        </div>
+    </div>
+
+    <!-- Campo de Busca para Repetições -->
+    <div class="busca-repeticoes" id="buscaRepeticoes" style="display: none;">
+        <div class="busca-title">
+            <i class="fas fa-search"></i> Buscar Combinações Repetidas
+        </div>
+        <div class="busca-controls">
+            <input type="text" id="campoBusca" placeholder="Digite o número do concurso ou dezenas (ex: 04,06,07,17,26,36,69)" class="busca-input">
+            <button class="button busca-btn" onclick="buscarRepeticoes()">
+                <i class="fas fa-search"></i> Buscar
+            </button>
+            <button class="button busca-clear" onclick="limparBusca()">
+                <i class="fas fa-times"></i> Limpar
+            </button>
+        </div>
+        <div id="resultadoBusca" class="resultado-busca">
+            <!-- Resultados da busca serão inseridos aqui -->
         </div>
     </div>
 
@@ -933,7 +1342,61 @@
                             <li>Interface totalmente personalizável</li>
                             <li>Presets prontos para facilitar o uso</li>
                             <li><strong>Time do Coração</strong> mantido em todos os ajustes</li>
+                            <li><strong>🏆 CONFERÊNCIA INTELIGENTE</strong> detecta combinações repetidas</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NOVA SEÇÃO: CONFERÊNCIA INTELIGENTE DA TIMEMANIA -->
+            <div class="help-section">
+                <h3><i class="fas fa-search"></i> CONFERÊNCIA INTELIGENTE DE REPETIÇÕES:</h3>
+                
+                <div style="background: linear-gradient(135deg, #ffebee, #ffcdd2); padding: 20px; border-radius: 10px; border: 2px solid #e74c3c; margin: 15px 0;">
+                    <h4 style="color: #c62828; margin-bottom: 15px;"><i class="fas fa-exclamation-triangle"></i> FUNCIONALIDADE PRINCIPAL:</h4>
+                    
+                    <div class="help-steps">
+                        <div class="help-step">
+                            <div class="help-step-number">1</div>
+                            <div class="help-step-content">
+                                <h4>ANÁLISE AUTOMÁTICA DAS COMBINAÇÕES:</h4>
+                                <p>O sistema pega CADA combinação ajustada (7 dezenas) e compara com TODOS os resultados históricos da Timemania</p>
+                            </div>
+                        </div>
+                        
+                        <div class="help-step">
+                            <div class="help-step-number">2</div>
+                            <div class="help-step-content">
+                                <h4>DETECÇÃO ESPECÍFICA DA TIMEMANIA:</h4>
+                                <p>Verifica se uma combinação completa (ex: "04,06,07,17,26,36,69") já foi sorteada em QUALQUER concurso histórico</p>
+                            </div>
+                        </div>
+                        
+                        <div class="help-step">
+                            <div class="help-step-number">3</div>
+                            <div class="help-step-content">
+                                <h4>ALERTA VISUAL DE COMBINAÇÕES:</h4>
+                                <p>Destaca em <span style="background: #e74c3c; color: white; padding: 2px 6px; border-radius: 4px;">VERMELHO</span> + mostra em qual concurso a combinação foi encontrada</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.3); border-radius: 8px;">
+                        <h4 style="color: #c62828; margin-bottom: 10px;"><i class="fas fa-lightbulb"></i> TIMEMANIA - PARTICULARIDADES:</h4>
+                        <ul style="color: #8b0000;">
+                            <li><strong>Verificação por dezenas:</strong> Cada ajuste é comparado com TODAS as combinações históricas</li>
+                            <li><strong>Base histórica:</strong> Desde 2008 - mais de 17 anos de sorteios (TER/QUI/SAB)</li>
+                            <li><strong>7 dezenas únicas:</strong> Encontra combinações idênticas completas</li>
+                            <li><strong>Ajustes numéricos:</strong> Analisa modificações de -10 até +10</li>
+                            <li><strong>Limites 01-80:</strong> Trabalha dentro dos limites da Timemania</li>
+                            <li><strong>Time do Coração:</strong> Mantido inalterado (não afeta análise)</li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-top: 15px; text-align: center;">
+                        <strong style="color: #c62828; font-size: 1.1rem;">
+                            🏆 CLIQUE EM "CONFERIR REPETIÇÕES" PARA ATIVAR A ANÁLISE DE COMBINAÇÕES
+                        </strong>
                     </div>
                 </div>
             </div>
@@ -990,6 +1453,10 @@
                                     <strong><i class="fas fa-sort-numeric-up"></i> Preset Sequencial:</strong>
                                     <span>Aplica: +1, +2, +3, +4, +5, +6</span>
                                 </div>
+                                <div class="help-preset">
+                                    <strong><i class="fas fa-search"></i> Conferir Repetições:</strong>
+                                    <span style="color: #c62828; font-weight: bold;">Verifica se alguma combinação ajustada já foi sorteada antes</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1001,7 +1468,8 @@
                             <ul>
                                 <li>O carregamento acontece <strong>automaticamente</strong></li>
                                 <li>A aplicação busca TODOS os concursos da API da Caixa</li>
-                                <li>Aplica seus ajustes personalizados automaticamente</li>
+                                <li>Aplica seus ajustes personalizados nas 7 dezenas</li>
+                                <li><strong>🔍 Use "Conferir Repetições" após carregar</strong></li>
                             </ul>
                         </div>
                     </div>
@@ -1032,6 +1500,24 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="help-example">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Exemplo - Repetição Detectada na Timemania:</h4>
+                        <div class="help-example-content">
+                            <div class="help-config">
+                                <strong>Situação:</strong> Após aplicar ajuste +1 no Concurso 2277<br>
+                                <strong>Resultado:</strong> 05,07,08,18,27,37,70
+                            </div>
+                            <div class="help-result">
+                                <div style="background: #ffebee; padding: 10px; border-radius: 6px; border: 2px solid #e74c3c;">
+                                    <strong style="color: #c62828;">⚠️ ALERTA TIMEMANIA:</strong> Esta combinação <span style="background: #e74c3c; color: white; padding: 2px 6px; border-radius: 3px;">05,07,08,18,27,37,70</span> já foi sorteada no <strong>Concurso 1245</strong>
+                                </div>
+                                <div class="help-note" style="color: #c62828; font-weight: bold;">
+                                    ⚠️ EVITE apostar nesta combinação - já foi sorteada antes!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -1046,6 +1532,7 @@
                             <li><strong>Máximo:</strong> 80 (se calcular mais que 80, fica 80)</li>
                             <li><strong>Dezenas:</strong> 7 dezenas por sorteio</li>
                             <li><strong>Time:</strong> Mantido em todos os ajustes</li>
+                            <li><strong>Conferência:</strong> Verifica combinações completas (7 dezenas)</li>
                         </ul>
                     </div>
                     
@@ -1058,6 +1545,7 @@
                             <li>✅ Interface responsiva para mobile</li>
                             <li>✅ Paginação inteligente</li>
                             <li>✅ Time do Coração preservado</li>
+                            <li>✅ <strong>Conferência automática de combinações repetidas</strong></li>
                         </ul>
                     </div>
                 </div>
@@ -1071,11 +1559,13 @@
                     <div class="help-flow-arrow">⬇️</div>
                     <div class="help-flow-step">2. <strong>Aguarde</strong> o carregamento automático</div>
                     <div class="help-flow-arrow">⬇️</div>
-                    <div class="help-flow-step">3. <strong>Analise</strong> os resultados na tabela</div>
+                    <div class="help-flow-step">3. <strong>Clique</strong> em "Conferir Repetições" 🏆</div>
                     <div class="help-flow-arrow">⬇️</div>
-                    <div class="help-flow-step">4. <strong>Ajuste</strong> as configurações se necessário</div>
+                    <div class="help-flow-step">4. <strong>Analise</strong> os alertas das 7 dezenas</div>
                     <div class="help-flow-arrow">⬇️</div>
-                    <div class="help-flow-step">5. <strong>Baixe</strong> os dados no formato desejado</div>
+                    <div class="help-flow-step">5. <strong>Ajuste</strong> as configurações se houver repetições</div>
+                    <div class="help-flow-arrow">⬇️</div>
+                    <div class="help-flow-step">6. <strong>Baixe</strong> os dados no formato desejado</div>
                 </div>
             </div>
         </div>
@@ -1471,6 +1961,11 @@ const RESULTS_PER_PAGE = 20;
 let totalPages = 0;
 let isLoading = false;
 let cancelarCarregamento = false;
+let combinacoesRepetidas = new Map();
+
+// Cache otimizado para conferência
+let cacheConferencia = new Map();
+let cacheOriginais = new Map();
 
 // Configurações das APIs - PRIORIZANDO API DA CAIXA
 const API_CONFIG = {
@@ -1509,6 +2004,532 @@ const TIMES_CORACAO = [
     "CEARÁ CE", "SPORT PE", "SANTA CRUZ PE", "ATLÉTICO PR", "CORITIBA PR",
     "CHAPECOENSE SC", "AVAÍ SC", "GOIÁS GO", "VILA NOVA GO", "AMÉRICA MG"
 ];
+
+// =================== FUNÇÕES DE CONFERÊNCIA INTELIGENTE ===================
+
+async function conferirCombinacoes() {
+    if (allResults.length === 0) {
+        showNotification('❌ Carregue os resultados primeiro!', 'error');
+        return;
+    }
+
+    console.log('🔍 Iniciando conferência inteligente de combinações repetidas da Timemania...');
+    
+    // Iniciar feedback em tempo real
+    iniciarProgressoConferencia();
+    
+    const quantidade = parseInt(document.getElementById('quantidadeAjustes').value);
+    let totalCombinacoes = 0;
+    let combinacoesRepetidas = 0;
+    let concursosProcessados = 0;
+    
+    const startTime = Date.now();
+
+    console.log(`📊 INICIANDO CONFERÊNCIA DETALHADA DA TIMEMANIA:`);
+    console.log(`   - Total de resultados: ${allResults.length}`);
+    console.log(`   - Quantidade de ajustes: ${quantidade}`);
+    console.log(`   - Combinações esperadas: ${allResults.length * quantidade} (7 dezenas por combinação)`);
+
+    try {
+        // Criar cache otimizado se não existir
+        if (cacheOriginais.size === 0) {
+            atualizarProgresso('📋 Criando cache otimizado de combinações...', 5, 0, 0, 0, startTime);
+            
+            console.log('🔨 CONSTRUINDO CACHE DE COMBINAÇÕES ORIGINAIS DA TIMEMANIA:');
+            allResults.forEach((result, index) => {
+                // Criar chave única para a combinação (7 dezenas ordenadas)
+                const dezenasSorted = [...result.dezenas].sort((a, b) => parseInt(a) - parseInt(b));
+                const key = dezenasSorted.join(',');
+                
+                cacheOriginais.set(key, {
+                    concurso: result.concurso,
+                    data: result.data,
+                    dezenas: result.dezenas,
+                    timeCoracao: result.timeCoracao
+                });
+                
+                // Log dos primeiros 3 concursos para verificação
+                if (index < 3) {
+                    console.log(`   Cache[${index}]: Concurso ${result.concurso}`);
+                    console.log(`      Dezenas: ${result.dezenas.join(',')}`);
+                    console.log(`      Time: ${result.timeCoracao}`);
+                }
+            });
+            
+            console.log(`💾 Cache criado com ${cacheOriginais.size} combinações únicas (7 dezenas cada)`);
+        }
+
+        atualizarProgresso('🔍 Iniciando análise de repetições...', 10, 0, 0, 0, startTime);
+
+        // Processar em lotes para melhor performance
+        const LOTE_SIZE = 50;
+        const totalLotes = Math.ceil(allResults.length / LOTE_SIZE);
+
+        for (let lote = 0; lote < totalLotes; lote++) {
+            const inicioLote = lote * LOTE_SIZE;
+            const fimLote = Math.min(inicioLote + LOTE_SIZE, allResults.length);
+            
+            // Atualizar progresso do lote
+            const progressoLote = 10 + ((lote / totalLotes) * 80);
+            atualizarProgresso(
+                `🔄 Analisando lote ${lote + 1}/${totalLotes} (concursos ${inicioLote + 1}-${fimLote})...`,
+                progressoLote,
+                concursosProcessados,
+                totalCombinacoes,
+                combinacoesRepetidas,
+                startTime
+            );
+
+            // Processar lote atual
+            for (let i = inicioLote; i < fimLote; i++) {
+                const result = allResults[i];
+                
+                // Limpar dados anteriores
+                result.temRepeticao = false;
+                result.ajustesRepetidos = {};
+
+                // Verificar cada ajuste
+                for (let j = 1; j <= quantidade; j++) {
+                    const ajuste = result[`ajuste${j}`];
+                    
+                    if (ajuste && ajuste.length === 7) {
+                        totalCombinacoes++;
+                        
+                        // Criar chave da combinação ajustada (ordenada)
+                        const ajusteSorted = [...ajuste].sort((a, b) => parseInt(a) - parseInt(b));
+                        const chaveAjuste = ajusteSorted.join(',');
+                        
+                        if (cacheOriginais.has(chaveAjuste)) {
+                            const combinacaoOriginal = cacheOriginais.get(chaveAjuste);
+                            
+                            // Não considerar repetição se for o mesmo concurso
+                            if (combinacaoOriginal.concurso !== result.concurso) {
+                                combinacoesRepetidas++;
+                                result.temRepeticao = true;
+                                
+                                if (!result.ajustesRepetidos[`ajuste${j}`]) {
+                                    result.ajustesRepetidos[`ajuste${j}`] = [];
+                                }
+                                
+                                result.ajustesRepetidos[`ajuste${j}`].push({
+                                    combinacao: chaveAjuste,
+                                    concursoOriginal: combinacaoOriginal.concurso,
+                                    dataOriginal: combinacaoOriginal.data,
+                                    dezenasOriginais: combinacaoOriginal.dezenas,
+                                    timeOriginal: combinacaoOriginal.timeCoracao
+                                });
+
+                                console.log(`⚠️ REPETIÇÃO TIMEMANIA: Ajuste ${j} do concurso ${result.concurso} (${chaveAjuste}) = Concurso ${combinacaoOriginal.concurso}`);
+                            }
+                        }
+                    }
+                }
+                
+                concursosProcessados++;
+            }
+
+            // Pequena pausa para não travar a UI
+            await new Promise(resolve => setTimeout(resolve, 10));
+        }
+
+        console.log(`📊 ESTATÍSTICAS FINAIS DA CONFERÊNCIA TIMEMANIA:`);
+        console.log(`   - Concursos processados: ${concursosProcessados}`);
+        console.log(`   - Total de combinações verificadas: ${totalCombinacoes}`);
+        console.log(`   - Repetições encontradas: ${combinacoesRepetidas}`);
+        console.log(`   - Taxa de repetição: ${(combinacoesRepetidas / totalCombinacoes * 100).toFixed(2)}%`);
+
+        // Finalizar progresso
+        atualizarProgresso(
+            '✅ Análise concluída! Exibindo resultados...',
+            95,
+            concursosProcessados,
+            totalCombinacoes,
+            combinacoesRepetidas,
+            startTime
+        );
+
+        // Pequena pausa antes de mostrar resultados
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        // Finalizar e exibir resultados
+        finalizarProgressoConferencia();
+        exibirResultadosConferencia(totalCombinacoes, combinacoesRepetidas);
+        renderCurrentPage();
+
+        console.log(`✅ Conferência Timemania concluída: ${combinacoesRepetidas} repetições em ${totalCombinacoes} combinações`);
+        
+    } catch (error) {
+        console.error('Erro durante conferência:', error);
+        finalizarProgressoConferencia();
+        showNotification('❌ Erro durante a conferência!', 'error');
+    }
+}
+
+function iniciarProgressoConferencia() {
+    // Esconder seção de alertas anterior
+    const conferenciaSection = document.getElementById('conferenciaSection');
+    conferenciaSection.style.display = 'none';
+    
+    // Mostrar seção de progresso
+    const progressoSection = document.getElementById('progressoConferencia');
+    progressoSection.style.display = 'block';
+    
+    // Resetar progresso
+    document.getElementById('progressoFill').style.width = '0%';
+    document.getElementById('statProcessados').textContent = '0';
+    document.getElementById('statCombinacoes').textContent = '0';
+    document.getElementById('statRepetidos').textContent = '0';
+    document.getElementById('statTempo').textContent = '0s';
+    
+    // Desabilitar botão
+    const btnConferir = document.getElementById('btnConferir');
+    btnConferir.disabled = true;
+    btnConferir.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analisando...';
+    
+    // Scroll para o progresso
+    progressoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function atualizarProgresso(texto, percentual, processados, combinacoes, repetidos, startTime) {
+    const tempoDecorrido = Math.floor((Date.now() - startTime) / 1000);
+    
+    // Atualizar texto
+    document.getElementById('progressoTexto').textContent = texto;
+    
+    // Atualizar barra de progresso
+    document.getElementById('progressoFill').style.width = `${percentual}%`;
+    
+    // Atualizar estatísticas
+    document.getElementById('statProcessados').textContent = processados.toLocaleString();
+    document.getElementById('statCombinacoes').textContent = combinacoes.toLocaleString();
+    document.getElementById('statRepetidos').textContent = repetidos.toLocaleString();
+    document.getElementById('statTempo').textContent = `${tempoDecorrido}s`;
+}
+
+function finalizarProgressoConferencia() {
+    // Completar barra de progresso
+    document.getElementById('progressoFill').style.width = '100%';
+    document.getElementById('progressoTexto').textContent = '✅ Conferência concluída!';
+    
+    // Restaurar botão
+    const btnConferir = document.getElementById('btnConferir');
+    btnConferir.disabled = false;
+    btnConferir.innerHTML = '<i class="fas fa-search"></i> Conferir Repetições';
+    
+    // Esconder progresso após 2 segundos
+    setTimeout(() => {
+        const progressoSection = document.getElementById('progressoConferencia');
+        progressoSection.style.display = 'none';
+    }, 2000);
+}
+
+function exibirResultadosConferencia(totalCombinacoes, quantidadeRepetidos) {
+    const conferenciaSection = document.getElementById('conferenciaSection');
+    const alertasContainer = document.getElementById('alertasRepetidos');
+
+    if (quantidadeRepetidos === 0) {
+        // Nenhuma repetição encontrada
+        alertasContainer.innerHTML = `
+            <div style="background: linear-gradient(135deg, #22c55e, #16a34a); color: white; padding: 20px; border-radius: 10px; text-align: center; font-weight: bold;">
+                <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
+                <h3>🎉 EXCELENTE! NENHUMA REPETIÇÃO ENCONTRADA!</h3>
+                <p style="margin: 10px 0;">Analisamos <strong>${totalCombinacoes.toLocaleString()}</strong> combinações ajustadas da Timemania (7 dezenas cada) e nenhuma já foi sorteada antes.</p>
+                <p style="font-size: 0.9rem; opacity: 0.9;">✅ Todas as suas configurações de ajustes estão seguras para apostas!</p>
+                
+                <div style="background: rgba(255,255,255,0.2); margin-top: 15px; padding: 15px; border-radius: 8px; font-size: 0.85rem;">
+                    <h4 style="margin-bottom: 10px;"><i class="fas fa-clipboard-check"></i> VERIFICAÇÃO TIMEMANIA CONFIRMADA:</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: left;">
+                        <div>✅ Cache de ${allResults.length} combinações originais</div>
+                        <div>✅ ${totalCombinacoes.toLocaleString()} combinações verificadas</div>
+                        <div>✅ 7 dezenas por combinação</div>
+                        <div>✅ Dezenas entre 01-80</div>
+                    </div>
+                    <div style="margin-top: 10px; text-align: center; font-weight: bold;">
+                        📊 Taxa de repetição: ${(quantidadeRepetidos / totalCombinacoes * 100).toFixed(3)}%
+                    </div>
+                </div>
+            </div>
+        `;
+        conferenciaSection.style.display = 'block';
+        showNotification('🎉 Conferência concluída: ZERO repetições!', 'success');
+    } else {
+        // Repetições encontradas - mostrar campo de busca
+        document.getElementById('buscaRepeticoes').style.display = 'block';
+        
+        let alertasHtml = `
+            <div class="alerta-repetida">
+                <i class="fas fa-exclamation-triangle" style="font-size: 1.5rem; margin-bottom: 10px; display: block;"></i>
+                <h3>⚠️ ${quantidadeRepetidos} REPETIÇÕES DETECTADAS!</h3>
+                <p>De ${totalCombinacoes.toLocaleString()} combinações analisadas da Timemania (7 dezenas cada), encontramos ${quantidadeRepetidos} que já foram sorteadas antes.</p>
+                <p style="font-size: 0.9rem; margin-top: 10px;"><strong>Recomendação:</strong> Evite apostar nas combinações destacadas em vermelho na tabela.</p>
+                <p style="font-size: 0.9rem; margin-top: 10px; background: rgba(255,255,255,0.2); padding: 10px; border-radius: 6px;">
+                    <i class="fas fa-search"></i> <strong>Use o campo de busca abaixo para localizar rapidamente as combinações repetidas na tabela!</strong>
+                </p>
+            </div>
+        `;
+
+        // Listar as repetições encontradas
+        const repeticoesDetalhadas = [];
+        allResults.forEach(result => {
+            if (result.temRepeticao) {
+                Object.keys(result.ajustesRepetidos).forEach(ajusteKey => {
+                    const infos = result.ajustesRepetidos[ajusteKey];
+                    infos.forEach(info => {
+                        repeticoesDetalhadas.push({
+                            concursoAtual: result.concurso,
+                            dataAtual: result.data,
+                            ajuste: ajusteKey,
+                            combinacao: info.combinacao,
+                            concursoOriginal: info.concursoOriginal,
+                            dataOriginal: info.dataOriginal,
+                            dezenasOriginais: info.dezenasOriginais,
+                            timeOriginal: info.timeOriginal
+                        });
+                    });
+                });
+            }
+        });
+
+        if (repeticoesDetalhadas.length > 0) {
+            alertasHtml += `
+                <div style="background: white; margin-top: 15px; padding: 15px; border-radius: 8px; color: #2d0612;">
+                    <h4 style="color: #c62828; margin-bottom: 15px;"><i class="fas fa-list"></i> Detalhes das Repetições:</h4>
+                    <div style="max-height: 200px; overflow-y: auto;">
+            `;
+
+            repeticoesDetalhadas.slice(0, 10).forEach((rep, index) => {
+                const ajusteNum = rep.ajuste.replace('ajuste', '');
+                const select = document.getElementById(`ajuste${ajusteNum}`);
+                const valorAjuste = select ? select.value : '?';
+                const simbolo = parseInt(valorAjuste) >= 0 ? '+' : '';
+
+                alertasHtml += `
+                    <div style="padding: 10px; margin: 5px 0; background: #ffebee; border-left: 4px solid #c62828; border-radius: 4px;">
+                        <strong>Concurso ${rep.concursoAtual}</strong> - Ajuste ${simbolo}${valorAjuste}: 
+                        <span style="background: #c62828; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.8rem;">${rep.combinacao}</span>
+                        <br><small>Já foi sorteada no Concurso ${rep.concursoOriginal} (${rep.dataOriginal})</small>
+                    </div>
+                `;
+            });
+
+            if (repeticoesDetalhadas.length > 10) {
+                alertasHtml += `
+                    <div style="text-align: center; margin-top: 10px; font-style: italic; color: #666;">
+                        ... e mais ${repeticoesDetalhadas.length - 10} repetições. Veja a tabela abaixo para detalhes completos.
+                    </div>
+                `;
+            }
+
+            alertasHtml += `</div></div>`;
+        }
+
+        alertasContainer.innerHTML = alertasHtml;
+        conferenciaSection.style.display = 'block';
+        showNotification(`⚠️ ${quantidadeRepetidos} repetições encontradas!`, 'error');
+    }
+
+    // Scroll suave até a seção de conferência
+    conferenciaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// =================== FUNÇÕES DE BUSCA DE REPETIÇÕES ===================
+
+function buscarRepeticoes() {
+    const termoBusca = document.getElementById('campoBusca').value.trim();
+    const resultadoContainer = document.getElementById('resultadoBusca');
+    
+    if (!termoBusca) {
+        resultadoContainer.innerHTML = '<div class="sem-resultados">Digite um termo para buscar.</div>';
+        return;
+    }
+    
+    console.log(`🔍 Buscando repetições com termo: "${termoBusca}"`);
+    
+    // Buscar em todas as repetições encontradas
+    const resultadosEncontrados = [];
+    
+    allResults.forEach(result => {
+        if (result.temRepeticao) {
+            // Verificar se o termo bate com o número do concurso
+            if (result.concurso.toString().includes(termoBusca)) {
+                resultadosEncontrados.push({
+                    tipo: 'concurso',
+                    result: result,
+                    match: `Concurso ${result.concurso}`
+                });
+            }
+            
+            // Verificar cada ajuste repetido
+            Object.keys(result.ajustesRepetidos).forEach(ajusteKey => {
+                const infos = result.ajustesRepetidos[ajusteKey];
+                
+                infos.forEach(info => {
+                    // Verificar se o termo bate com a combinação repetida
+                    const termosVariados = [
+                        info.combinacao,
+                        info.combinacao.replace(/,/g, '-'),
+                        info.combinacao.replace(/,/g, ' ')
+                    ];
+                    
+                    if (termosVariados.some(termo => termo.toLowerCase().includes(termoBusca.toLowerCase()))) {
+                        resultadosEncontrados.push({
+                            tipo: 'combinacao',
+                            result: result,
+                            ajuste: ajusteKey,
+                            info: info,
+                            match: `Combinação ${termoBusca} encontrada`
+                        });
+                    }
+                    
+                    // Verificar se o termo bate com o concurso original
+                    if (info.concursoOriginal.toString().includes(termoBusca)) {
+                        resultadosEncontrados.push({
+                            tipo: 'concurso_original',
+                            result: result,
+                            ajuste: ajusteKey,
+                            info: info,
+                            match: `Concurso original ${info.concursoOriginal}`
+                        });
+                    }
+                });
+            });
+        }
+    });
+    
+    exibirResultadosBusca(resultadosEncontrados, termoBusca);
+}
+
+function exibirResultadosBusca(resultados, termoBusca) {
+    const resultadoContainer = document.getElementById('resultadoBusca');
+    
+    if (resultados.length === 0) {
+        resultadoContainer.innerHTML = `
+            <div class="sem-resultados">
+                Nenhuma repetição encontrada para "${termoBusca}".
+                <br><small>Tente buscar por: número do concurso (ex: 2277) ou dezenas (ex: 04,06,07,17,26,36,69)</small>
+            </div>
+        `;
+        return;
+    }
+    
+    let html = `
+        <div style="margin-bottom: 15px; font-weight: bold; color: #495057;">
+            🏆 ${resultados.length} resultado(s) encontrado(s) para "${termoBusca}":
+        </div>
+    `;
+    
+    // Agrupar resultados únicos para evitar duplicatas
+    const resultadosUnicos = new Map();
+    
+    resultados.forEach(item => {
+        const chave = `${item.result.concurso}-${item.ajuste || 'geral'}-${item.info?.combinacao || 'todos'}`;
+        if (!resultadosUnicos.has(chave)) {
+            resultadosUnicos.set(chave, item);
+        }
+    });
+    
+    Array.from(resultadosUnicos.values()).forEach(item => {
+        if (item.tipo === 'concurso') {
+            html += `
+                <div class="resultado-item repetida">
+                    <div class="resultado-header">
+                        <span>🎯 Concurso ${item.result.concurso} (${item.result.data})</span>
+                    </div>
+                    <div class="resultado-detalhes">
+                        <strong>Dezenas Originais:</strong> ${item.result.dezenas.map(d => `<span class="dezena-busca">${d}</span>`).join('')}<br>
+                        <strong>Time:</strong> <span class="time-busca">${item.result.timeCoracao}</span><br>
+                        <strong>Repetições encontradas:</strong> ${Object.keys(item.result.ajustesRepetidos).length} ajuste(s)
+                        <br><small>Clique em "Ir para linha" para localizar na tabela</small>
+                        <br><button class="button" style="margin-top: 5px; padding: 5px 10px; font-size: 0.8rem;" onclick="irParaLinha(${item.result.concurso})">
+                            <i class="fas fa-arrow-right"></i> Ir para linha
+                        </button>
+                    </div>
+                </div>
+            `;
+        } else if (item.info) {
+            const ajusteNum = item.ajuste.replace('ajuste', '');
+            const select = document.getElementById(`ajuste${ajusteNum}`);
+            const valorAjuste = select ? select.value : '?';
+            const simbolo = parseInt(valorAjuste) >= 0 ? '+' : '';
+
+            html += `
+                <div class="resultado-item repetida">
+                    <div class="resultado-header">
+                        <span>⚠️ Concurso ${item.result.concurso} - Ajuste ${simbolo}${valorAjuste}</span>
+                    </div>
+                    <div class="resultado-detalhes">
+                        <strong>Combinação Repetida:</strong> 
+                        ${item.info.combinacao.split(',').map(d => `<span class="dezena-busca repetida">${d.padStart(2, '0')}</span>`).join('')}<br>
+                        <strong>Já foi sorteada no:</strong> Concurso ${item.info.concursoOriginal} (${item.info.dataOriginal})
+                        <br><small>Esta combinação é idêntica a um resultado já sorteado</small>
+                        <br><button class="button" style="margin-top: 5px; padding: 5px 10px; font-size: 0.8rem;" onclick="irParaLinha(${item.result.concurso})">
+                            <i class="fas fa-arrow-right"></i> Ir para linha
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+    });
+    
+    resultadoContainer.innerHTML = html;
+}
+
+function limparBusca() {
+    document.getElementById('campoBusca').value = '';
+    document.getElementById('resultadoBusca').innerHTML = '<div class="sem-resultados">Digite um termo para buscar combinações repetidas.</div>';
+}
+
+function irParaLinha(numeroConcurso) {
+    // Encontrar em qual página está o concurso
+    const indiceConcurso = allResults.findIndex(result => parseInt(result.concurso) === parseInt(numeroConcurso));
+    
+    if (indiceConcurso === -1) {
+        showNotification('❌ Concurso não encontrado na tabela', 'error');
+        return;
+    }
+    
+    // Calcular a página
+    const paginaDestino = Math.ceil((indiceConcurso + 1) / RESULTS_PER_PAGE);
+    
+    // Ir para a página
+    if (paginaDestino !== currentPage) {
+        goToPage(paginaDestino);
+    }
+    
+    // Destacar a linha após um pequeno delay
+    setTimeout(() => {
+        destacarLinhaConcurso(numeroConcurso);
+    }, 500);
+    
+    // Scroll para a tabela
+    setTimeout(() => {
+        const tableContainer = document.querySelector('.table-container');
+        tableContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 800);
+    
+    showNotification(`🎯 Navegando para o Concurso ${numeroConcurso}`, 'info');
+}
+
+function destacarLinhaConcurso(numeroConcurso) {
+    // Remover destaque anterior
+    document.querySelectorAll('.linha-destacada').forEach(linha => {
+        linha.classList.remove('linha-destacada');
+    });
+    
+    // Encontrar e destacar a linha do concurso
+    const rows = document.querySelectorAll('#timemaniaResults tbody tr');
+    rows.forEach(row => {
+        const concursoCell = row.cells[0];
+        if (concursoCell && parseInt(concursoCell.textContent) === parseInt(numeroConcurso)) {
+            row.classList.add('linha-destacada');
+            
+            // Remover destaque após 5 segundos
+            setTimeout(() => {
+                row.classList.remove('linha-destacada');
+            }, 5000);
+        }
+    });
+}
 
 // =================== FUNÇÕES DE CONTROLE DE AJUSTES ===================
 
@@ -1556,6 +2577,11 @@ function updateTable() {
             calculateAdjustments(result);
         });
         renderCurrentPage();
+        
+        // Limpar conferência anterior quando ajustes mudam
+        const conferenciaSection = document.getElementById('conferenciaSection');
+        conferenciaSection.style.display = 'none';
+        combinacoesRepetidas.clear();
     }
 }
 
@@ -1752,6 +2778,10 @@ async function fetchAllTimemaniaResults() {
     allResults = [];
     currentPage = 1;
 
+    // Esconder seção de conferência ao recarregar
+    const conferenciaSection = document.getElementById('conferenciaSection');
+    conferenciaSection.style.display = 'none';
+
     // Atualizar estado dos botões
     updateButtonStates();
 
@@ -1826,6 +2856,10 @@ function showConcursoInfo(results) {
                 Dezenas: ${ultimoConcurso.dezenas.map(num => `<span class="dezenas-ultimo">${num}</span>`).join(' ')}
                 <br />
                 Time: <span class="time-ultimo">${ultimoConcurso.timeCoracao}</span>
+                <br /><br />
+                <div style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; padding: 10px; border-radius: 8px; margin-top: 10px;">
+                    <i class="fas fa-search"></i> <strong>Use "Conferir Repetições" para verificar se alguma combinação ajustada já foi sorteada!</strong>
+                </div>
             </div>
         `;
         
@@ -2353,11 +3387,30 @@ function renderCurrentPage() {
     currentResults.forEach(result => {
         const row = tableBody.insertRow();
         
-        const formatSorteio = (dezenas, timeCoracao) => {
+        // Verificar se tem repetições para aplicar classe CSS
+        if (result.temRepeticao) {
+            row.classList.add('combinacao-repetida');
+        }
+        
+        const formatSorteio = (dezenas, timeCoracao, ajusteKey = null) => {
             return `
                 <div class="sorteio-grupo">
-                    <div class="dezenas-linha">${dezenas.map(d => `<span class="dezena">${d}</span>`).join('')}</div>
-                    <div class="time-linha"><span class="time-coracao" title="${timeCoracao}">${timeCoracao}</span></div>
+                    <div class="dezenas-linha">${dezenas.map((d, index) => {
+                        let dezenadClass = 'dezena';
+                        let title = `Dezena ${index + 1}`;
+                        
+                        // Verificar se esta combinação específica está repetida
+                        if (ajusteKey && result.ajustesRepetidos && result.ajustesRepetidos[ajusteKey]) {
+                            const combinacaoRepetida = result.ajustesRepetidos[ajusteKey][0]; // Pegar primeira repetição
+                            if (combinacaoRepetida) {
+                                dezenadClass += ' repetida';
+                                title = `Combinação já sorteada no Concurso ${combinacaoRepetida.concursoOriginal}`;
+                            }
+                        }
+                        
+                        return `<span class="${dezenadClass}" title="${title}">${d}</span>`;
+                    }).join('')}</div>
+                    <div class="time-linha"><span class="time-coracao ${ajusteKey && result.ajustesRepetidos && result.ajustesRepetidos[ajusteKey] ? 'repetida' : ''}" title="${timeCoracao}">${timeCoracao}</span></div>
                 </div>
             `;
         };
@@ -2371,8 +3424,19 @@ function renderCurrentPage() {
         // Adicionar colunas de ajustes baseadas na quantidade selecionada
         for (let i = 1; i <= quantidade; i++) {
             const ajuste = result[`ajuste${i}`];
+            const ajusteKey = `ajuste${i}`;
+            
+            let cellClass = '';
+            let cellTitle = '';
+            
+            if (result.ajustesRepetidos && result.ajustesRepetidos[ajusteKey]) {
+                cellClass = 'ajuste-repetido';
+                const repetidas = result.ajustesRepetidos[ajusteKey];
+                cellTitle = repetidas.map(rep => `Combinação ${rep.combinacao} já sorteada no Concurso ${rep.concursoOriginal}`).join(' | ');
+            }
+            
             if (ajuste) {
-                htmlRow += `<td>${formatSorteio(ajuste, result.timeCoracao)}</td>`;
+                htmlRow += `<td class="${cellClass}" title="${cellTitle}">${formatSorteio(ajuste, result.timeCoracao, ajusteKey)}</td>`;
             } else {
                 htmlRow += `<td>-</td>`;
             }
@@ -2607,9 +3671,21 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
+// Adicionar funcionalidade de busca com Enter
+document.addEventListener('DOMContentLoaded', function() {
+    const campoBusca = document.getElementById('campoBusca');
+    if (campoBusca) {
+        campoBusca.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                buscarRepeticoes();
+            }
+        });
+    }
+});
+
 // Inicialização
 window.addEventListener('load', () => {
-    console.log('Aplicação da Timemania carregada com ajustes personalizáveis.');
+    console.log('Aplicação da Timemania carregada com ajustes personalizáveis e conferência inteligente.');
     
     // Configurar estado inicial dos controles
     updateAjustes();
